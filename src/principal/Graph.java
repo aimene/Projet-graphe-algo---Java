@@ -4,6 +4,7 @@ import java.util.Hashtable;
 import java.util.Vector;
 
 public abstract class Graph {
+    protected int numberOfVertex,numberOfEdge;
     protected Numerotation numerotation;
     public abstract Graph copyGraph();
     public abstract boolean addVertex(Vertex v);
@@ -16,12 +17,12 @@ public abstract class Graph {
     public abstract void displayOnConsole();
     public abstract boolean writeToFile(String fileName);
     public abstract void displayOnGUI();
-    public abstract Vector<Integer> getFS();
+    public abstract Vector<Vertex> getFS();
     public abstract Vector<Hashtable<Vertex, Integer>> getAPS();
     public abstract Vector<Vector<Edge>> getAdjMat();
     public abstract Vector<Integer> getDDI();
     public abstract boolean existEdge(Vertex a,Vertex b);
-    public abstract boolean existVertex(Vertex a,Vertex b);
+    public abstract boolean existVertex(Vertex a);
     public abstract double valueEdge(Vertex a, Vertex b);
     public abstract double valueEdge(int a,int b);
 }
