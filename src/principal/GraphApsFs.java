@@ -11,59 +11,32 @@ import java.io.FileWriter;
 import java.io.File;
 
 public class GraphApsFs extends Graph {
-  private Vector<Hashtable<Vertex, Integer>> aps;
-  private Vector<Vertex> fs;
-  private Numerotation numerotation;
+  private int[] aps;
+  private int[] fs;
 
-    @Override
-    public Vector<Vertex> getFS() {
 
-        return fs;
+
+    public int vertexNumber(){
+        return aps[0];
     }
-
-    @Override
-    public Vector<Hashtable<Vertex, Integer>> getAPS() {
-
-        return aps;
+    public int edgeNumber(){
+        return fs[0]-aps[0];
     }
 
   @Override
-  public Vector<Integer> getDDI(){
-      Vector<Integer> ddi = new Vector<Integer>(numberOfVertex + 1);
-      ddi.setSize(numberOfVertex + 1);
-      for (int i = 0 ; i<numberOfVertex;++i){
-          ddi.setElementAt(0,i);
+  public int[] getDDI(){
+      int[] ddi = new int[vertexNumber()+1];
+
+      for (int i = 0 ; i<vertexNumber();++i){
+          ddi[0]=i;
       }
-      for (int i = 1 ; i<numberOfVertex+numberOfEdge;++i){
-          Vertex vertex = fs.get(i);
-          ddi.set(vertex.getIndex(),ddi.get(vertex.getIndex())+1);
+      for (int i = 1 ; i<vertexNumber()+edgeNumber();++i){
+          Vertex vertex = numerotation.vertexOf(fs[i]);
+          ddi[fs[i]]++;
       }
       return ddi;
   }
 
-    @Override
-    public Vector<Vector<Edge>> getAdjMat(){
-
-        // not end
-        Vector<Vector<Edge>>  adjMat; // matrice d'adjacence
-        adjMat = new Vector<Vector<Edge>>(numberOfVertex+1);
-
-        for(int i = 1; i< numberOfVertex; i++)
-        {
-            Hashtable<Vertex, Integer> hashtable = new Hashtable<Vertex, Integer>() ;
-            hashtable=aps.get(i);
-            Enumeration e = hashtable.elements();
-            Vertex v = new Vertex();
-            v = (Vertex) e.nextElement();
-
-        }
-        return  adjMat;
-    }
-    @Override
-    public boolean existEdge(Vertex a, Vertex b) {
-        // not do
-        return true;
-    }
 
     @Override
     public boolean existVertex(Vertex a) {

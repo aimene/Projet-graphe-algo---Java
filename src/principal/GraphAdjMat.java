@@ -1,76 +1,115 @@
 package principal;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Vector;
 
-public class GraphAdjMat {
-    private Vector<Vector<Edge>> adjencyMatrix;
-    private Vertex vertexA;
-    private Vertex vertexB;
-    private double value;
-    protected Numerotation numerotation;
-    
-    public boolean addVertex(Vertex v) {
-        return true;
+
+public class GraphAdjMat extends Graph{
+    private Edge [][] adjencyMatrix;
+
+
+    @Override
+    public Graph copyGraph() {
+        return null;
     }
-    
+
+    @Override
+    public boolean addVertex(Vertex v) {
+        return false;
+    }
+
+    @Override
     public boolean deleteVertex(Vertex v) {
         return false;
     }
-    
+
+    @Override
     public boolean addEgde(Vertex a, Vertex b) {
-        return true;
+        return false;
     }
-    
-    public boolean deleteEdge(Vertex a,Vertex b) {
-        return true;
+
+    @Override
+    public boolean deleteEdge(Vertex a, Vertex b) {
+        return false;
     }
-    
+
+    @Override
     public void readFromKeyBoard() {
-          
+
     }
-    
+
+    @Override
     public boolean readFromFile(String fileName) {
-        return true;
+        return false;
     }
-    
+
+    @Override
     public void readFromGUI() {
-        
+
     }
-    
+
+    @Override
     public void displayOnConsole() {
-        
+
     }
-    
-    public Vector<Integer> getFS() {
-        
+
+    @Override
+    public boolean writeToFile(String fileName) {
+        return false;
     }
-    
-    public Vector<Hashtable<Vertex, Integer>> getAPS() {
-        
+
+    @Override
+    public void displayOnGUI() {
+
     }
-    
-    public Vector<Vector<Edge>> getAdjMat() {
-        
+
+    @Override
+    public Vertex[] getFS() {
+        return new Vertex[0];
     }
-    
-    public Vector<Integer> getDDI() {
-        
+
+    @Override
+    public int[] getAPS() {
+        return new int[0];
     }
-    
-    public boolean existEdge(Vertex a,Vertex b) {
-        
+
+    @Override
+    public Edge[][] getAdjMat() {
+        return new Edge[0][];
     }
-    
-    public boolean existVertex(Vertex a,Vertex b) {
-        
+
+    @Override
+    public int[] getDDI() {
+        return new int[0];
     }
-    
+
+    @Override
+    public boolean existEdge(Vertex a, Vertex b) {
+        return false;
+    }
+
+    @Override
+    public boolean existVertex(Vertex a) {
+        return false;
+    }
+
+    @Override
     public double valueEdge(Vertex a, Vertex b) {
-        
+        return 0;
     }
-    
-    public double valueEdge(int a,int b) {
-        
+
+    @Override
+    public double valueEdge(int a, int b) {
+        return 0;
+    }
+
+    @Override
+    public int vertexNumber() {
+        return 0;
+    }
+
+    @Override
+    public int edgeNumber() {
+        return 0;
     }
 }
