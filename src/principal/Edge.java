@@ -65,4 +65,5 @@ public class Edge {
                 " , value = " + value +
                 '}';
     }
+
 }
