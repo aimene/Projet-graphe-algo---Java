@@ -1,7 +1,6 @@
 package principal;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
+
 
 
 public class GraphAdjMat extends Graph{
@@ -64,7 +63,8 @@ public class GraphAdjMat extends Graph{
     }
 
     @Override
-    public Vertex[] getFS() {
+    public int[] getFS() {
+        int [] fs = new int [vertexNumber()+1]
         return new Vertex[0];
     }
 
@@ -75,7 +75,7 @@ public class GraphAdjMat extends Graph{
 
     @Override
     public Edge[][] getAdjMat() {
-        return new Edge[0][];
+        return adjencyMatrix;
     }
 
     @Override
@@ -85,31 +85,37 @@ public class GraphAdjMat extends Graph{
 
     @Override
     public boolean existEdge(Vertex a, Vertex b) {
-        return false;
+        if( existVertex(a) && existVertex(b) && adjencyMatrix[a.getIndex()][b.getIndex()]!=null )
+            return true;
+        else
+            return false;
     }
 
     @Override
     public boolean existVertex(Vertex a) {
-        return false;
+        if (numerotation.indexOf(a)==-1)
+            return false;
+        else
+            return true;
     }
 
     @Override
     public double valueEdge(Vertex a, Vertex b) {
-        return 0;
+        return adjencyMatrix[a.getIndex()][b.getIndex()].getValue();
     }
 
     @Override
     public double valueEdge(int a, int b) {
-        return 0;
+        return adjencyMatrix[a][b].getValue();
     }
 
     @Override
     public int vertexNumber() {
-        return 0;
+        return (int)adjencyMatrix[0][0].getValue();
     }
 
     @Override
     public int edgeNumber() {
-        return 0;
+        return (int)adjencyMatrix[0][1].getValue();
     }
 }
