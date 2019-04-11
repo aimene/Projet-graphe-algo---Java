@@ -46,7 +46,7 @@ public class Edge {
                 Objects.equals(vertexA.getIndex(), edge.vertexA.getIndex()) &&
                 Objects.equals(vertexB.getIndex(), edge.vertexB.getIndex()) ||
                 Objects.equals(vertexA.getIndex(), edge.vertexB.getIndex()) &&
-                Objects.equals(vertexB.getIndex(), edge.vertexA.getIndex()) ;
+                        Objects.equals(vertexB.getIndex(), edge.vertexA.getIndex());
 
 
     }

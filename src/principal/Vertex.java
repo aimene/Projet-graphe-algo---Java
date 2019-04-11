@@ -6,8 +6,8 @@ import java.util.Objects;
 public class Vertex {
 
     private String name;
-    private double value ;
-    private int index ;
+    private double value;
+    private int index;
     private Point position;
 
 
@@ -17,9 +17,11 @@ public class Vertex {
         this.index = index;
         this.position = position;
     }
+
     public Vertex() {
-        this("", 0.0d, 0, new Point(0,0));
+        this("", 0.0d, 0, new Point(0, 0));
     }
+
     public String getName() {
         return name;
     }

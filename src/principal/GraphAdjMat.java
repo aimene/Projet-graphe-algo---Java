@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 
-public class GraphAdjMat extends Graph{
-    private Edge [][] adjencyMatrix;
+public class GraphAdjMat extends Graph {
+    private Edge[][] adjencyMatrix;
+
+    public GraphAdjMat(Numerotation num, int numberOfVertex, int numberOfEdge) {
+        super(num, numberOfVertex, numberOfEdge);
+    }
 
 
     @Override
@@ -64,8 +68,8 @@ public class GraphAdjMat extends Graph{
     }
 
     @Override
-    public Vertex[] getFS() {
-        return new Vertex[0];
+    public int[] getFS() {
+        return new int[0];
     }
 
     @Override
