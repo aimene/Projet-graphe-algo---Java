@@ -1,5 +1,6 @@
 package principal;
 
+import javax.xml.stream.events.EntityDeclaration;
 import java.awt.*;
 import java.io.*;
 import java.util.Enumeration;
@@ -10,6 +11,7 @@ import java.util.Vector;
 public class GraphApsFs extends Graph {
     private int[] aps;
     private int[] fs;
+    private double[] valueEdge;
 
     public GraphApsFs(Numerotation num, int numberOfVertex, int numberOfEdge) {
         super(num, numberOfVertex, numberOfEdge);
@@ -30,15 +32,21 @@ public class GraphApsFs extends Graph {
         for (int i = 0; i <= vertexNumber(); ++i) {
             ddi[i] = 0;
         }
-        for (int i = 1; i < vertexNumber() + edgeNumber(); ++i) {
-            //Vertex vertex = numerotation.vertexOf(fs[i]);
+        for (int i = 1; i <= vertexNumber() + edgeNumber(); ++i) {
             ddi[fs[i]]++;
         }
         return ddi;
     }
 
     @Override
-    public boolean existEdge(Vertex a, Vertex b) {
+    public boolean existEdge(Edge e) {
+        if( existVertex(e.getVertexA()) && existVertex(e.getVertexB())){
+            int indexB = numerotation.indexOf(e.getVertexB());
+            if(valueEdge(e.getVertexA(),e.getVertexB()) == e.getValue()){
+                return true;
+            }
+            return false;
+        }
         return false;
     }
 
@@ -60,10 +68,11 @@ public class GraphApsFs extends Graph {
     }
 
     @Override
-    public boolean deleteVertex(Vertex v) {
+    public boolean deleteVertex(Vertex v) {// à modifier
         if (existVertex(v)) {
             int i = numerotation.indexOf(v);
             numerotation.getAllVertex().remove(i);
+
             return true;
         }
         return false;
@@ -79,14 +88,20 @@ public class GraphApsFs extends Graph {
         int numberOfEdge = in.nextInt();
         fs=new int[numberOfEdge+numberOfVertex+1];
         fs[0] = numberOfVertex + numberOfEdge;
+        valueEdge = new double[numberOfEdge+numberOfVertex+1];
+        valueEdge[0]=numberOfVertex + numberOfEdge;
         int k = 1;
         int sommet;
+        int value;
         for (int i = 1; i <=numberOfVertex; ++i) {
             System.out.println("Entrer les successeurs du sommet " + i);
             while (reponse.equals("o")){
                 System.out.println("Entrer le sommet");
                 sommet = in.nextInt();
                 fs[k++] = sommet;
+                System.out.println("Entrer la valeur de l'arc");
+                value = in.nextInt();
+                valueEdge[k++]= value;
                 System.out.println("Encore un successeur du sommet " + i + "? o/n");
                 String rep = new String();
                 rep=in.nextLine();
@@ -96,24 +111,29 @@ public class GraphApsFs extends Graph {
             fs[k] = 0;
             reponse="o";
         }
+        fs2aps();
     }
 
     public boolean readFromFile(String fileName) {
         Scanner lecteur = null;
         int size = Integer.parseInt(lecteur.nextLine());
-        int[][] tableau = new int[size][size];//le tableau où stocker tes résultats. Tu peux aussi utiliser un ArrayList
+        int numberofEdge = Integer.parseInt(lecteur.nextLine());
         try {
-            int i = 0;
+            int k =1;
             lecteur = new Scanner(new FileReader(fileName + ".txt"));
+            fs = new int[size + numberofEdge+1];
+            fs[0]=size+numberofEdge;
             while (lecteur.hasNextLine()) {
                 String ligne = lecteur.nextLine();
-                String[] ligneTableau = ligne.split("\t");//transforme par exemple "aaa;bbb;ccc" en {"aaa","bbb","ccc"}
+                String[] ligneTableau = ligne.split(" ");
                 int taille = ligneTableau.length;
-                for (int j = 0; j < taille; ++j) {
-                    tableau[i][j] = Integer.parseInt(ligneTableau[j]);
+                for (int j = 0; j <taille; ++j) {
+                    fs[k] = Integer.parseInt(ligneTableau[j]);
+                    ++k;
                 }
-                i++;
+                fs[k] =  0;
             }
+            fs2aps();
             return true;
         } catch (Exception e) {
             System.out.println("erreur de lecture");
@@ -123,42 +143,66 @@ public class GraphApsFs extends Graph {
 
     @Override
     public double valueEdge(Vertex a, Vertex b) {
-        //not do
-        return 0;
+        if(existVertex(a) && existVertex(b)){
+            int indexB = numerotation.indexOf(b);
+            int tmp = aps[indexB+1]-aps[indexB]-1;
+                if(tmp>=0){
+                    return valueEdge[indexB];
+                }
+            }
+        return -1;
     }
 
     @Override
     public double valueEdge(int a, int b) {
-        // not do
-        return 0;
+        Vertex v1 = numerotation.vertexOf(a);
+        Vertex v2 = numerotation.vertexOf(b);
+        return valueEdge(v1,v2);
     }
 
     @Override
-    public Graph copyGraph() {
-
-        return null;
-    }
-
-    @Override
-    public boolean addEgde(Vertex a, Vertex b) {
-        if(existVertex(a)){
-            int[]fsTemp = new int[fs[0]+2];
-            int indexA = numerotation.indexOf(a);
-            fsTemp[0] = fs[0]+1;
-            for (int i=1;i<indexA;++i){
-                fsTemp[i]=fs[i];
-            }
-            int indexB = numerotation.indexOf(b);
-            fsTemp[indexA]=indexB;
-            for(int i=indexA+1;i<fs[0];++i){
-                fsTemp[i]= fs[i];
-            }
-            fs = new int[fsTemp[0]+1];
-            for (int i=0;i<fs[0];++i){
-                fs[i]=fsTemp[i];
-            }
+    public Graph copyGraph() { // à revoir
+        Numerotation n = new Numerotation();
+        GraphApsFs graph = new GraphApsFs(n,vertexNumber(),edgeNumber());
+        for (int i=0;i<fs[0];++i){
+            graph.fs[i]= fs[i];
+            graph.valueEdge[i]=valueEdge[i];
         }
-        return false;
+        graph.fs2aps();
+        return graph ;
+    }
+
+    @Override
+    public boolean addEgde(Edge e){
+        if(existEdge(e)){
+            int[]fsTemp = new int[fs[0]+2];
+            double valueEgeTemp[] = new double[fs[0]+2];
+            int indexA = numerotation.indexOf(e.getVertexA());
+            int longueur = aps[indexA];
+            fsTemp[0]=fs[0]+1;
+            for (int i=1;i<longueur;++i){
+                fsTemp[i]=fs[i];
+                valueEgeTemp[i]=valueEdge[i];
+            }
+            int indexB = numerotation.indexOf(e.getVertexB());
+            fsTemp[longueur]=indexB;
+            valueEdge[longueur] = e.getValue();
+            for(int i=longueur;i<=fs[0];++i){
+                fsTemp[i+1]= fs[i];
+                valueEgeTemp[i+1]=valueEdge[i];
+            }
+            fs = new int [fsTemp[0]+1];
+            fs[0]=fsTemp[0];
+            valueEdge = new double[fsTemp[0]+1];
+            for(int i=1;i<=fsTemp[0]+1;++i){
+                fs[i] = fsTemp[i];
+                valueEdge[i] = valueEgeTemp[i];
+            }
+            aps[indexB]++;
+            return  true;
+        }
+        else
+          return false;
     }
 
     @Override
@@ -174,7 +218,14 @@ public class GraphApsFs extends Graph {
     @Override
     public void displayOnConsole() {
         for (int i =0;i<fs[0];i++)
-        System.out.println(fs[i]+" ");
+            System.out.print(fs[i] + " ");
+        System.out.println("Affichage des sommets qui ont des successeurs ");
+        for (int i=1;i<=fs[0];++i){
+            System.out.println("Les successeurs du sommet " + i);
+            while(fs[i]!=0){
+                System.out.print(fs[i] + " ");
+            }
+        }
     }
 
     @Override
@@ -182,6 +233,7 @@ public class GraphApsFs extends Graph {
         try {
             PrintWriter writer = new PrintWriter(fileName+".txt");
             writer.println(vertexNumber());
+            writer.println(edgeNumber());
             int k = 1;
             for (int i = 1; i <vertexNumber(); ++i) {
 
@@ -219,27 +271,26 @@ public class GraphApsFs extends Graph {
     }
 
     @Override
-    public Edge[][] getAdjMat() {
+    public Edge[][] getAdjMat() {// à faire
         Edge adjMat[][] = new Edge[vertexNumber() + 1][vertexNumber() + 1];
-
-
-           /* a = new int * [n+1]; // matrice d'adjacence
-            a[0] = new int[2];
-            a[0][0]=n;
-            a[0][1]=m;
-            for(int i = 1; i ‹ n; i++)
-            {
-                int nbs = aps[i+1] ‐ aps[i] ‐ 1; // calcul le nombre d'arc du sommet i.
-                a[i] = new int [nbs+1];
-                a[i][0]=nbs; // on insere le nombre d'arc du sommet i en 0
-                for(int j = 1; fs[aps[i] + j ‐ 1] != 0; j++)
-                a[i][j] = fs[aps[i]+j‐1]; // on insere les valeurs des arcs du sommet i.
-            }*/
-
         return new Edge[0][];
     }
+    private void fs2aps(){
+        int n = fs[0];
+        aps = new int[n+1];
+        aps[0]=n;
+        aps[1]=1;
+        int j=2;
+        for (int i = 2;i<=n;++i){
+            while(fs[j]!=0){
+                ++j;
+            }
+            j++;
+            aps[i]=j;
+        }
+    }
     public static void main(String[] args) {
-        Numerotation n = new Numerotation(5);
+        Numerotation n = new Numerotation();
         GraphApsFs g = new GraphApsFs(n, 5, 5);
         g.readFromKeyBoard();
         g.displayOnConsole();
