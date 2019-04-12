@@ -2,6 +2,7 @@ package Algorithm;
 
 import principal.Graph;
 
+
 public class GraphAlgorithm {
 
     //Algo des distances
@@ -284,6 +285,36 @@ public class GraphAlgorithm {
 
 
 
+
+    //Algorithme de Tarjan
+    public int[] Tarjan(Graph g, int[] d, int[] low, int[] scc boolean[] stacked, int tricks, int current_scc ){
+        V = graph.length;
+
+        this.graph = graph;
+
+        low = new int[V];
+
+        visited = new boolean[V];
+
+        stack = new Stack<Integer>();
+
+        sccComp = new ArrayList<>();
+
+
+
+        for (int v = 0; v < V; v++)
+
+            if (!visited[v])
+
+                dfs(v);
+
+
+
+        return sccComp;
+
+    }
+
+
     //Algorithme de l'ordonnancement
 
     public int[] ordonnancement(Graph g ){
@@ -348,12 +379,7 @@ public class GraphAlgorithm {
     }
 
 
-
-
-
-
-
-
+    
 
 
 }
