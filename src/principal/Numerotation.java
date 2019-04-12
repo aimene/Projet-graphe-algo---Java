@@ -5,6 +5,7 @@ import java.util.Vector;
 
 public class Numerotation {
 
+
     private int counter ;
     private Hashtable< Vertex ,Integer > vertexHashTable;
     private Vector<Vertex> vertex;

@@ -1,51 +1,124 @@
 package principal;
 
 import java.awt.*;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Scanner;
 import java.util.Vector;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.File;
 
 public class GraphApsFs extends Graph {
-  private int[] aps;
-  private int[] fs;
+    private int[] aps;
+    private int[] fs;
 
+    public GraphApsFs(Numerotation num, int numberOfVertex, int numberOfEdge) {
+        super(num, numberOfVertex, numberOfEdge);
+    }
 
+    public int vertexNumber() {
+        return fs[0];
+    }
 
-    public int vertexNumber(){
+    public int edgeNumber() {
         return aps[0];
     }
-    public int edgeNumber(){
-        return fs[0]-aps[0];
+
+    @Override
+    public int[] getDDI() {
+        int[] ddi = new int[vertexNumber() + 1];
+
+        for (int i = 0; i <= vertexNumber(); ++i) {
+            ddi[i] = 0;
+        }
+        for (int i = 1; i < vertexNumber() + edgeNumber(); ++i) {
+            //Vertex vertex = numerotation.vertexOf(fs[i]);
+            ddi[fs[i]]++;
+        }
+        return ddi;
     }
 
-  @Override
-  public int[] getDDI(){
-      int[] ddi = new int[vertexNumber()+1];
-
-      for (int i = 0 ; i<vertexNumber();++i){
-          ddi[0]=i;
-      }
-      for (int i = 1 ; i<vertexNumber()+edgeNumber();++i){
-          Vertex vertex = numerotation.vertexOf(fs[i]);
-          ddi[fs[i]]++;
-      }
-      return ddi;
-  }
-
+    @Override
+    public boolean existEdge(Vertex a, Vertex b) {
+        return false;
+    }
 
     @Override
     public boolean existVertex(Vertex a) {
-          for (int i=1;i<=fs.size();++i){
-              if(fs.get(i).equals(a)){
-                  return true;
-              }
-          }
-          return false;
+        int valeur = numerotation.indexOf(a);
+        if (valeur!=-1)
+            return true;
+        return false;
+    }
+
+    @Override
+    public boolean addVertex(Vertex v) {
+        if (existVertex(v)) {
+            return false;
+        }
+        numerotation.addVertex(v);
+        return true;
+    }
+
+    @Override
+    public boolean deleteVertex(Vertex v) {
+        if (existVertex(v)) {
+            int i = numerotation.indexOf(v);
+            numerotation.getAllVertex().remove(i);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void readFromKeyBoard() {
+        String reponse = "o";
+        System.out.print("Entrer le nombre de sommets : ");
+        Scanner in = new Scanner(System.in);
+        int numberOfVertex = in.nextInt();
+        System.out.print("Entrer le nombre d'arcs : ");
+        int numberOfEdge = in.nextInt();
+        fs=new int[numberOfEdge+numberOfVertex+1];
+        fs[0] = numberOfVertex + numberOfEdge;
+        int k = 1;
+        int sommet;
+        for (int i = 1; i <=numberOfVertex; ++i) {
+            System.out.println("Entrer les successeurs du sommet " + i);
+            while (reponse.equals("o")){
+                System.out.println("Entrer le sommet");
+                sommet = in.nextInt();
+                fs[k++] = sommet;
+                System.out.println("Encore un successeur du sommet " + i + "? o/n");
+                String rep = new String();
+                rep=in.nextLine();
+                reponse = in.nextLine();
+            }
+            k++;
+            fs[k] = 0;
+            reponse="o";
+        }
+    }
+
+    public boolean readFromFile(String fileName) {
+        Scanner lecteur = null;
+        int size = Integer.parseInt(lecteur.nextLine());
+        int[][] tableau = new int[size][size];//le tableau où stocker tes résultats. Tu peux aussi utiliser un ArrayList
+        try {
+            int i = 0;
+            lecteur = new Scanner(new FileReader(fileName + ".txt"));
+            while (lecteur.hasNextLine()) {
+                String ligne = lecteur.nextLine();
+                String[] ligneTableau = ligne.split("\t");//transforme par exemple "aaa;bbb;ccc" en {"aaa","bbb","ccc"}
+                int taille = ligneTableau.length;
+                for (int j = 0; j < taille; ++j) {
+                    tableau[i][j] = Integer.parseInt(ligneTableau[j]);
+                }
+                i++;
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("erreur de lecture");
+            return false;
+        }
     }
 
     @Override
@@ -62,33 +135,29 @@ public class GraphApsFs extends Graph {
 
     @Override
     public Graph copyGraph() {
-        GraphApsFs graphe = new GraphApsFs();
-        for(int i=1;i<=fs.size();++i){
-            graphe.addVertex(fs.elementAt(i));
-        }
-        return graphe;
-    }
 
-    @Override
-    public boolean addVertex(Vertex v) {
-        if(existVertex(v)){
-            return false;
-        }
-        fs.addElement(v);
-        return true;
-    }
-
-    @Override
-    public boolean deleteVertex(Vertex v) {
-       if(existVertex(v)){
-           fs.remove(v);
-           return true;
-       }
-        return false;
+        return null;
     }
 
     @Override
     public boolean addEgde(Vertex a, Vertex b) {
+        if(existVertex(a)){
+            int[]fsTemp = new int[fs[0]+2];
+            int indexA = numerotation.indexOf(a);
+            fsTemp[0] = fs[0]+1;
+            for (int i=1;i<indexA;++i){
+                fsTemp[i]=fs[i];
+            }
+            int indexB = numerotation.indexOf(b);
+            fsTemp[indexA]=indexB;
+            for(int i=indexA+1;i<fs[0];++i){
+                fsTemp[i]= fs[i];
+            }
+            fs = new int[fsTemp[0]+1];
+            for (int i=0;i<fs[0];++i){
+                fs[i]=fsTemp[i];
+            }
+        }
         return false;
     }
 
@@ -98,110 +167,83 @@ public class GraphApsFs extends Graph {
     }
 
     @Override
-    public void readFromKeyBoard() {
-        System.out.println("Entrer le nombre de sommets");
-        Scanner in = new Scanner(System.in);
-        numberOfVertex = in.nextInt();
-        String reponse = "o";
-        String nom;
-        double value;
-        int index;
-        Point position = new Point();
-        for (int i = 1; i < numberOfVertex; ) {
-            System.out.println("Entrer les successeurs du sommet " + i);
-            Vertex v = new Vertex();
-            int k = 1;
-            while (!reponse.equals("o")) {
-                System.out.println("Entrer le nom du sommet");
-                nom = in.nextLine();
-                v.setName(nom);
-                System.out.println("Entrer l'index du sommet");
-                index = in.nextInt();
-                v.setIndex(index);
-                System.out.println("Entrer la position du sommet");
-                position.x = in.nextInt();
-                position.y = in.nextInt();
-                v.setPosition(position);
-                System.out.println("Entrer la valeur du sommet");
-                value = in.nextDouble();
-                v.setValue(value);
-                fs.set(k++, v);
-                System.out.println("Encore un prédécésseur du sommet " + i + "? o/n");
-                String rep = new String();
-                reponse = in.nextLine();
-            }
-            Vertex f = new Vertex("fin", 0.0, 0, new Point());
-            fs.set(k, f);
-
-        }
-    }
-
-        public boolean readFromFile(String fileName){
-        Scanner lecteur=null;
-        int[][] tableau;//le tableau où stocker tes résultats. Tu peux aussi utiliser un ArrayList
-        try {
-            int i = 0;
-            lecteur = new Scanner(new FileReader(fileName+".txt"));
-            while(lecteur.hasNextLine()) {
-                String ligne = lecteur.nextLine();
-                String[] ligneTableau = ligne.split("\t");//transforme par exemple "aaa;bbb;ccc" en {"aaa","bbb","ccc"}
-                int taille = ligneTableau.length;
-                tableau = new int[i][taille];
-                for(int j=0;j<taille;++j) {
-                    tableau[i][j] = Integer.parseInt(ligneTableau[j]);
-                }
-                i++;
-            }
-            return true;
-        }
-        catch (Exception e) {
-            System.out.println("erreur de lecture");
-            return false;
-        }
-    }
-
-    @Override
     public void readFromGUI() {
-            System.out.println("a");
+        System.out.println("a");
     }
 
     @Override
     public void displayOnConsole() {
-            System.out.println("a");
+        for (int i =0;i<fs[0];i++)
+        System.out.println(fs[i]+" ");
     }
 
     @Override
     public boolean writeToFile(String fileName) {
-        try{
-            File f =new File(fileName+".txt"); // définir l'arborescence
-            f.createNewFile();
-            FileWriter file=new FileWriter(f);
-            file.write(numberOfVertex);  // écrire une ligne dans le fichier resultat.txt
-            file.write("\n"); // forcer le passage à la ligne
-            for(int i=1;i<numberOfVertex;++i){
-                int k = 1;
-                while( (fs.get(k)).getIndex()!=0 ){
-                    file.write(k);
-                    file.write("\t");
-                    k++;
+        try {
+            PrintWriter writer = new PrintWriter(fileName+".txt");
+            writer.println(vertexNumber());
+            int k = 1;
+            for (int i = 1; i <vertexNumber(); ++i) {
+
+                while (fs[k]!=0) {
+                    writer.print(fs[i]);
+                    writer.print(" ");
+                   k++;
                 }
-                file.write("\n");
+                writer.println();
                 k++;
-                file.write( (fs.get(k)).getIndex() );
-                file.write("\t");
+                writer.print((fs[k]));
+                writer.print(" ");
                 k++;
             }
-            file.close(); // fermer le fichier à la fin des traitements
+            writer.close();
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
-
-        }
-
+    }
 
     @Override
     public void displayOnGUI() {
 
     }
+
+    @Override
+    public int[] getFS() {
+        return fs;
+    }
+
+    @Override
+    public int[] getAPS() {
+        return aps;
+    }
+
+    @Override
+    public Edge[][] getAdjMat() {
+        Edge adjMat[][] = new Edge[vertexNumber() + 1][vertexNumber() + 1];
+
+
+           /* a = new int * [n+1]; // matrice d'adjacence
+            a[0] = new int[2];
+            a[0][0]=n;
+            a[0][1]=m;
+            for(int i = 1; i ‹ n; i++)
+            {
+                int nbs = aps[i+1] ‐ aps[i] ‐ 1; // calcul le nombre d'arc du sommet i.
+                a[i] = new int [nbs+1];
+                a[i][0]=nbs; // on insere le nombre d'arc du sommet i en 0
+                for(int j = 1; fs[aps[i] + j ‐ 1] != 0; j++)
+                a[i][j] = fs[aps[i]+j‐1]; // on insere les valeurs des arcs du sommet i.
+            }*/
+
+        return new Edge[0][];
+    }
+    public static void main(String[] args) {
+        Numerotation n = new Numerotation(5);
+        GraphApsFs g = new GraphApsFs(n, 5, 5);
+        g.readFromKeyBoard();
+        g.displayOnConsole();
+        //g.writeToFile("fichier");
+    }
+
 }
