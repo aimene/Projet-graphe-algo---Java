@@ -223,6 +223,18 @@ public class GraphAlgorithm {
 
     //Algorithme de l'ordonnancement
 
+    public int[] ordonnancement(Graph g ){
+        /*
+        * Les sommets ont leur nouvelle numerotation selon les rangs croissants
+        * Le graphe est donné par fp,app et d
+        * d[i] represente le poids de l'arc issu de i
+        * */
+
+
+    }
+
+
+
 
 
 
