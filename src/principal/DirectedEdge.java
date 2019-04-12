@@ -2,13 +2,13 @@ package principal;
 
 import java.util.Objects;
 
-public class DirectedEdge extends  Edge {
+public class DirectedEdge extends Edge {
 
-  private int startingIndexVertex ;
-  private int arrivalIndexVertex;
+    private int startingIndexVertex;
+    private int arrivalIndexVertex;
 
     public DirectedEdge(Vertex vertexA, Vertex vertexB, double value, int startingIndexVertex, int arrivalIndexVertex) {
-        super(vertexA,  vertexB, value);
+        super(vertexA, vertexB, value);
         this.startingIndexVertex = startingIndexVertex;
         this.arrivalIndexVertex = arrivalIndexVertex;
     }
