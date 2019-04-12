@@ -11,7 +11,7 @@ public class Numerotation {
     private Vector<Vertex> vertex;
 
     public Numerotation(){
-        counter = -1;
+        counter = 0;
         vertexHashTable = new Hashtable<Vertex ,Integer>();
         vertex = new Vector<Vertex>();
 
@@ -51,6 +51,18 @@ public class Numerotation {
             return true;
         }
         return false;
+
+    }
+
+    public boolean deleteVertex ( Vertex v){
+
+        if (existVertex(v)){
+            vertexHashTable.remove(v);
+            vertex.remove(v);
+            return true;
+        }else{
+            return false;
+        }
 
     }
 

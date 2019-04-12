@@ -7,9 +7,15 @@ public class Edge {
     private Vertex vertexB;
     private double value;
 
+
     public Edge(Vertex vertexA, Vertex vertexB, double value) {
         this.vertexA = vertexA;
         this.vertexB = vertexB;
+        this.value = value;
+    }
+    public Edge( double value) {
+        this.vertexA = null;
+        this.vertexB = null;
         this.value = value;
     }
 
@@ -43,12 +49,8 @@ public class Edge {
         if (o == null || getClass() != o.getClass()) return false;
         Edge edge = (Edge) o;
         return Double.compare(edge.value, value) == 0 &&
-                Objects.equals(vertexA.getIndex(), edge.vertexA.getIndex()) &&
-                Objects.equals(vertexB.getIndex(), edge.vertexB.getIndex()) ||
-                Objects.equals(vertexA.getIndex(), edge.vertexB.getIndex()) &&
-                        Objects.equals(vertexB.getIndex(), edge.vertexA.getIndex());
-
-
+                Objects.equals(vertexA, edge.vertexA) &&
+                Objects.equals(vertexB, edge.vertexB);
     }
 
     @Override

@@ -8,7 +8,7 @@ public abstract class Graph {
 
     protected Numerotation numerotation;
 
-    public Graph(Numerotation num, int numberOfVertex, int numberOfEdge) {
+    public Graph(Numerotation num) {
         this.numerotation = num;
 
     }
@@ -18,11 +18,11 @@ public abstract class Graph {
 
     public abstract boolean addVertex(Vertex v);
 
-    public abstract boolean deleteVertex(Vertex v);
+    public abstract  boolean deleteVertex(Vertex v);
 
     public abstract boolean addEgde(Edge e);
 
-    public abstract boolean deleteEdge(Vertex a, Vertex b);
+    public abstract boolean deleteEdge(Vertex a,Vertex b);
 
     public abstract void readFromKeyBoard();
 
@@ -45,6 +45,12 @@ public abstract class Graph {
     public abstract int[] getDDI();
 
     public abstract boolean existEdge(Edge e);
+
+    public abstract int[] getAPP();
+
+    public abstract int[] getFPP();
+
+    public abstract int[] getCFC();
 
     public abstract boolean existVertex(Vertex a);
 

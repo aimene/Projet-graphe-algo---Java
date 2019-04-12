@@ -4,42 +4,111 @@ package principal;
 
 
 public class GraphAdjMat extends Graph {
+
     private Edge[][] adjencyMatrix;
 
-    public GraphAdjMat(Numerotation num, int numberOfVertex, int numberOfEdge) {
-        super(num, numberOfVertex, numberOfEdge);
+    public GraphAdjMat(Numerotation num) {
+        super(num);
+    }
+    public GraphAdjMat(Numerotation num,Edge[][] adjencyMatrix) {
+        super(num);
+        this.adjencyMatrix=adjencyMatrix;
     }
 
 
     @Override
     public Graph copyGraph() {
-        return null;
+        return new GraphAdjMat(numerotation,adjencyMatrix);
     }
 
     @Override
     public boolean addVertex(Vertex v) {
-        return false;
+        if (!numerotation.existVertex(v)) {
+            Edge[][] adjencyMatrixTemp = new Edge[vertexNumber() + 1][vertexNumber() + 1];
+            for (int i = 1; i <= vertexNumber();i++)
+            {
+                for (int j=1;j<= vertexNumber();j++){
+                    adjencyMatrixTemp[i][j]=adjencyMatrix[i][j];
+                }
+            }
+            adjencyMatrix=adjencyMatrixTemp;
+            numerotation.addVertex(v);
+                return true;
+        }else {
+            return false;
+        }
     }
 
     @Override
     public boolean deleteVertex(Vertex v) {
-        return false;
+        if (numerotation.existVertex(v)) {
+            for (int i = 0; i <= vertexNumber(); i++) {
+                adjencyMatrix[numerotation.indexOf(v)][i] = null;
+                adjencyMatrix[i][numerotation.indexOf(v)] = null;
+            }
+            numerotation.deleteVertex(v);
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     @Override
-    public boolean addEgde(Vertex a, Vertex b) {
-        return false;
+    public boolean addEgde(Edge e) {
+        if (numerotation.existVertex(e.getVertexA()) && numerotation.existVertex(e.getVertexB())){
+            adjencyMatrix[numerotation.indexOf(e.getVertexA())][numerotation.indexOf(e.getVertexB())]=e ;
+            return true;
+        }else
+            return false;
     }
 
     @Override
     public boolean deleteEdge(Vertex a, Vertex b) {
-        return false;
+        if (numerotation.existVertex(a) && numerotation.existVertex(b)){
+            adjencyMatrix[numerotation.indexOf(a)][numerotation.indexOf(b)]=null ;
+            return true;
+        }else
+            return false;
     }
-
     @Override
     public void readFromKeyBoard() {
+        String reponse = "o";
+        System.out.print("Entrer le nombre de sommets : ");
+        Scanner in = new Scanner(System.in);
+        int numberOfVertex = in.nextInt();
+        System.out.print("Entrer le nombre d'arcs : ");
+        int numberOfEdge = in.nextInt();
+        A[i][j] = new int[numberOfEdge+numberOfVertex+1];
+        A[0][0]= numberOfVertex + numberOfEdge;
+        int k = 1;
+        int sommet;
+        for (int i = 1; i <=numberOfVertex; ++i) {
+            System.out.println("Entrer les successeurs du sommet " + i);
+            while (reponse.equals("o")){
+                System.out.println("Entrer le sommet");
+                sommet = in.nextInt();
+                System.out.println("Encore un successeur du sommet " + i + "? o/n");
+                String rep = new String();
+                rep=in.nextLine();
+                reponse = in.nextLine();
+            }
 
-    }
+            for (int j=1; j <=numberOfEdge; ++j) {
+                System.out.println("Entrer  les successeurs du sommet " + j);
+                while (reponse.equals("n")){
+                    System.out.println("Entrer le sommet");
+                    sommet = in.nextInt();
+                    A[i][j] = Edge(A,s,value);
+                    System.out.println("Encore un successeur du sommet " + i + "? o/n");
+                    String rep = new String();
+                    rep=in.nextLine();
+                    reponse = in.nextLine();
+                }
+            }
+            k++;
+            A[i][j] = Edge(A,s,value);
+            reponse="o";
 
     @Override
     public boolean readFromFile(String fileName) {
@@ -68,17 +137,59 @@ public class GraphAdjMat extends Graph {
 
     @Override
     public int[] getFS() {
-<<<<<<< HEAD
-        return new int[0];
-=======
-        int [] fs = new int [vertexNumber()+1]
-        return new Vertex[0];
->>>>>>> 81db356cdf558d8e1261f373263d479cb48134d0
+
+        int [] fs = new int [vertexNumber()+edgeNumber()+1];
+        fs[0]=vertexNumber()+edgeNumber();
+        int k=1;
+        for (int i = 1; i <= vertexNumber();i++)
+        {
+            for (int j=1;j<= vertexNumber();j++){
+               if (adjencyMatrix[i][j]!=null){
+
+                   fs[k]=numerotation.indexOf(adjencyMatrix[i][j].getVertexA());
+                   k++;
+               }
+            }
+            fs[k]=0;
+            k++;
+        }
+
+        return fs;
+
     }
 
     @Override
     public int[] getAPS() {
-        return new int[0];
+
+        int aps [] = new int [vertexNumber()+1];
+        aps[0]=vertexNumber();
+        aps[1]=1;
+        int j = 2 ;
+        int [] fs = getFS();
+        for (int i =1; i <vertexNumber();i++){
+            if (fs[i]==0){
+                aps[j]=i+1;
+                j++;
+            }
+        }
+        return aps;
+    }
+
+    @Override
+    public int[] getDDI() {
+
+        int ddi [] = new int[vertexNumber()+1];
+        ddi[0]=vertexNumber();
+        int [] aps =getAPS();
+        int [] fs = getFS();
+
+        for (int i =1;i<=vertexNumber(); i++){
+            ddi[i]=0;
+        }
+        for (int i =1;i<=vertexNumber()+edgeNumber(); i++){
+            ddi[fs[i]]++;
+        }
+        return ddi;
     }
 
     @Override
@@ -86,14 +197,11 @@ public class GraphAdjMat extends Graph {
         return adjencyMatrix;
     }
 
-    @Override
-    public int[] getDDI() {
-        return new int[0];
-    }
+
 
     @Override
     public boolean existEdge(Vertex a, Vertex b) {
-        if( existVertex(a) && existVertex(b) && adjencyMatrix[a.getIndex()][b.getIndex()]!=null )
+        if( existVertex(a) && existVertex(b) && adjencyMatrix[numerotation.indexOf(a)][numerotation.indexOf(b)]!=null )
             return true;
         else
             return false;
@@ -109,7 +217,7 @@ public class GraphAdjMat extends Graph {
 
     @Override
     public double valueEdge(Vertex a, Vertex b) {
-        return adjencyMatrix[a.getIndex()][b.getIndex()].getValue();
+        return adjencyMatrix[numerotation.indexOf(a)][numerotation.indexOf(b)].getValue();
     }
 
     @Override
