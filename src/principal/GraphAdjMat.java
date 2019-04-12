@@ -14,16 +14,32 @@ public class GraphAdjMat extends Graph{
 
     @Override
     public boolean addVertex(Vertex v) {
-        return false;
+        if (!numerotation.existVertex(v)) {
+            Edge[][] adjencyMatrixTemp = new Edge[vertexNumber() + 1][vertexNumber() + 1];
+            for (int i = 1; i <= vertexNumber();i++)
+            {
+                for (int j=1;j<= vertexNumber();j++){
+                    adjencyMatrixTemp[i][j]=adjencyMatrix[i][j];
+                }
+            }
+            adjencyMatrix=adjencyMatrixTemp;
+            numerotation.addVertex(v);
+                return true;
+        }else {
+            return false;
+        }
     }
 
     @Override
     public boolean deleteVertex(Vertex v) {
+        for(){
+
+        }
         return false;
     }
 
     @Override
-    public boolean addEgde(Vertex a, Vertex b) {
+    public boolean addEgde(Edge e) {
         return false;
     }
 

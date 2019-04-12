@@ -19,7 +19,7 @@ public abstract class Graph {
     public abstract Graph copyGraph();
     public abstract boolean addVertex(Vertex v);
     public abstract  boolean deleteVertex(Vertex v);
-    public abstract boolean addEgde(Vertex a, Vertex b);
+    public abstract boolean addEgde(Edge e);
     public abstract boolean deleteEdge(Vertex a,Vertex b);
     public abstract void readFromKeyBoard();
     public abstract boolean readFromFile(String fileName);
