@@ -152,12 +152,8 @@ public class GraphAdjMat extends Graph {
         for (int i =1;i<=vertexNumber(); i++){
             ddi[i]=0;
         }
-        for (int i =1;i<=vertexNumber(); i++){
-
-            for (int j =1;j<=vertexNumber(); j++){
-                if(fs[j]==i)
-                    ddi[fs[j]]++;
-            }
+        for (int i =1;i<=vertexNumber()+edgeNumber(); i++){
+            ddi[fs[i]]++;
         }
         return ddi;
     }
