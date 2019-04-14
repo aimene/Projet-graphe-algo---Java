@@ -185,11 +185,9 @@ public class GraphAlgorithm {
     // Utilise la matrice d'adjacence
 
     public int[] codagePrufer(Graph g){
-<<<<<<< HEAD
+
         int[][] matAdj = g.AdjMat(); // On récupère la matrice d'adjacence
-=======
-        int[][] matAdj = g.getAdjMat(); // On récupère la matrice d'adjacence
->>>>>>> 640e57b3a35b15311781e8348694c8249de8573a
+
         int n = matAdj[0][0];
         
         int[] codage  = new int[n-1];

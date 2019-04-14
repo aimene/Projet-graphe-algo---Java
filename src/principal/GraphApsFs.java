@@ -15,14 +15,12 @@ public class GraphApsFs extends Graph {
 
     public GraphApsFs(Numerotation num) {
         super(num);
-<<<<<<< HEAD
-=======
+
     }
     public GraphApsFs(Numerotation num,int[]fs){
         this(num);
         this.fs=fs;
         fs2aps();
->>>>>>> 640e57b3a35b15311781e8348694c8249de8573a
     }
 
     public int vertexNumber() {
@@ -48,6 +46,11 @@ public class GraphApsFs extends Graph {
     }
 
     @Override
+    public boolean existEdge(Vertex a, Vertex b) {
+        return false;
+    }
+
+    @Override
     public boolean existEdge(Edge e) {
         if( existVertex(e.getVertexA()) && existVertex(e.getVertexB())){
             int indexB = numerotation.indexOf(e.getVertexB());
@@ -70,6 +73,12 @@ public class GraphApsFs extends Graph {
         }
         return app;
     }
+
+    @Override
+    public int[] getFP() {
+        return new int[0];
+    }
+
     private int[] dist(int s,int[]dist){
         int d=0;
         int t=0;
