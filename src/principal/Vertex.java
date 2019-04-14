@@ -1,6 +1,6 @@
 package principal;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.Objects;
 
 public class Vertex {
@@ -12,7 +12,7 @@ public class Vertex {
     private Point position;
 
 
-    public Vertex(String name, double value, int index, Point position) {
+    public Vertex(String name, double value,  Point position) {
         this.name = name;
         this.value = value;
 
@@ -20,7 +20,7 @@ public class Vertex {
     }
 
     public Vertex() {
-        this("", 0.0d, 0, new Point(0, 0));
+        this("", 0.0d,  new Point(0, 0));
     }
 
     public String getName() {

@@ -2,12 +2,15 @@ package Algorithm;
 
 import principal.Graph;
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 640e57b3a35b15311781e8348694c8249de8573a
 public class GraphAlgorithm {
 
     //Algo des distances
 
-    public int[] distance(Graph g,int s,int[] distance){
+    public int[] distance(Graph g, int s, int[] distance){
 
         int[] aps = g.getAPS();
         int[] fs = g.getFS();
@@ -182,7 +185,9 @@ public class GraphAlgorithm {
     // Utilise la matrice d'adjacence
 
     public int[] codagePrufer(Graph g){
-        int[][] matAdj = g.getAdjMat(); // On récupère la matrice d'adjacence
+
+        int[][] matAdj = g.AdjMat(); // On récupère la matrice d'adjacence
+
         int n = matAdj[0][0];
         
         int[] codage  = new int[n-1];
