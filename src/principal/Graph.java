@@ -46,9 +46,8 @@ public abstract class Graph {
 
     public abstract int[] getAPP();
 
-    public abstract int[] getFPP();
+    public abstract int[] getFP();
 
-    public abstract int[] getCFC();
 
     public abstract boolean existEdge(Vertex a, Vertex b);
 

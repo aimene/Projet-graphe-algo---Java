@@ -1,10 +1,12 @@
 package Algorithm;
 
+import principal.Graph;
+
 public class GraphAlgorithm {
 
     //Algo des distances
 
-    public int[] distance(Graph g,int s,int[] distance){
+    public int[] distance(Graph g, int s, int[] distance){
 
         int[] aps = g.getAPS();
         int[] fs = g.getFS();
@@ -124,7 +126,7 @@ public class GraphAlgorithm {
 
 
     //Calculer la matrice des Cout avec le tableau qui contient les poids des différentes arrêtes, arc
-    public int[] Dijkstra(Grapbh g,int[][]Cout ,int s){
+    public int[] Dijkstra(Graph g,int[][]Cout ,int s){
         int[] aps = g.getAPS();
         int[] fs = g.getFS();
         int n = aps[0];
@@ -182,7 +184,7 @@ public class GraphAlgorithm {
     // Utilise la matrice d'adjacence
 
     public int[] codagePrufer(Graph g){
-        int[][] matAdj = g.AdjMat(); // On récupère la matrice d'adjacence 
+        int[][] matAdj = g.AdjMat(); // On récupère la matrice d'adjacence
         int n = matAdj[0][0];
         
         int[] codage  = new int[n-1];

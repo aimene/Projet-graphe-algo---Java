@@ -98,7 +98,12 @@ public class GraphAdjMat extends Graph {
 
     @Override
     public void displayOnGUI() {
-
+        for (int i =1;i<=vertexNumber();i++){
+            System.out.print("The vertex "+adjencyMatrix[i][1].getVertexA()+" has like successors : ");
+            for (int j =1;j<=vertexNumber();j++){
+                System.out.print(adjencyMatrix[i][j].getVertexB());
+            }
+        }
     }
 
     @Override
@@ -146,7 +151,7 @@ public class GraphAdjMat extends Graph {
 
         int ddi [] = new int[vertexNumber()+1];
         ddi[0]=vertexNumber();
-        int [] aps =getAPS();
+
         int [] fs = getFS();
 
         for (int i =1;i<=vertexNumber(); i++){
@@ -157,6 +162,44 @@ public class GraphAdjMat extends Graph {
         }
         return ddi;
     }
+
+    @Override
+    public int[] getAPP() {
+        int [] ddi = getDDI();
+        int [] app = new int[vertexNumber()+1];
+        app[0]=vertexNumber();
+        app[1]=1;
+        for (int i = 2 ; i <= vertexNumber(); i++){
+            app[i]=app[i-1]+ddi[i-1]+1;
+        }
+        return app;
+    }
+
+    @Override
+    public int[] getFP() {
+        int fp [] = new int [vertexNumber()+1];
+        int app [] = getAPP();
+        int fs [] = getFS();
+        int aps [] = getAPS();
+        fp[0]= fs[0];
+        int j=0;
+        for (int i =1; i<=aps[0];i++){
+            for(int k = aps[i];(j = fs[k])!=0; k++){
+                fp[app[j]]=i;
+                app[j]++;
+            }
+        }
+        for (int i=1 ;i<=aps[0];i++){
+            fp[app[i]]=0;
+        }
+        for (int i=app[0] ;i>1;i--){
+            app[i]=app[i-1]+1;
+        }
+        app[1]=1;
+        return app;
+    }
+
+
 
     @Override
     public Edge[][] getAdjMat() {

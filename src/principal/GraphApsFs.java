@@ -11,8 +11,8 @@ public class GraphApsFs extends Graph {
     private int[] aps;
     private int[] fs;
 
-    public GraphApsFs(Numerotation num, int numberOfVertex, int numberOfEdge) {
-        super(num, numberOfVertex, numberOfEdge);
+    public GraphApsFs(Numerotation num) {
+        super(num);
     }
 
     public int vertexNumber() {
