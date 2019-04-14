@@ -44,12 +44,12 @@ public abstract class Graph {
 
     public abstract int[] getDDI();
 
+    public abstract boolean existEdge(Edge e);
+
     public abstract int[] getAPP();
 
     public abstract int[] getFP();
 
-
-    public abstract boolean existEdge(Vertex a, Vertex b);
 
     public abstract boolean existVertex(Vertex a);
 

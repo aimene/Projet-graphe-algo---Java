@@ -73,8 +73,42 @@ public class GraphAdjMat extends Graph {
     }
     @Override
     public void readFromKeyBoard() {
+        String reponse = "o";
+        System.out.print("Entrer le nombre de sommets : ");
+        Scanner in = new Scanner(System.in);
+        int numberOfVertex = in.nextInt();
+        System.out.print("Entrer le nombre d'arcs : ");
+        int numberOfEdge = in.nextInt();
+        A[i][j] = new int[numberOfEdge+numberOfVertex+1];
+        A[0][0]= numberOfVertex + numberOfEdge;
+        int k = 1;
+        int sommet;
+        for (int i = 1; i <=numberOfVertex; ++i) {
+            System.out.println("Entrer les successeurs du sommet " + i);
+            while (reponse.equals("o")){
+                System.out.println("Entrer le sommet");
+                sommet = in.nextInt();
+                System.out.println("Encore un successeur du sommet " + i + "? o/n");
+                String rep = new String();
+                rep=in.nextLine();
+                reponse = in.nextLine();
+            }
 
-    }
+            for (int j=1; j <=numberOfEdge; ++j) {
+                System.out.println("Entrer  les successeurs du sommet " + j);
+                while (reponse.equals("n")){
+                    System.out.println("Entrer le sommet");
+                    sommet = in.nextInt();
+                    A[i][j] = Edge(A,s,value);
+                    System.out.println("Encore un successeur du sommet " + i + "? o/n");
+                    String rep = new String();
+                    rep=in.nextLine();
+                    reponse = in.nextLine();
+                }
+            }
+            k++;
+            A[i][j] = Edge(A,s,value);
+            reponse="o";
 
     @Override
     public boolean readFromFile(String fileName) {

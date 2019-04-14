@@ -2,6 +2,10 @@ package Algorithm;
 
 import principal.Graph;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 640e57b3a35b15311781e8348694c8249de8573a
 public class GraphAlgorithm {
 
     //Algo des distances
@@ -13,7 +17,7 @@ public class GraphAlgorithm {
        int n =    aps[0] ;
         int[] fileAttente =  new int[n+1];
         int tete = 0, queue = 1,p = 1, k=0;
-        distance[0] = //n ;
+        distance[0] = n ;
         for(int i=1;i <= n; i++){
             distance[i] = -1;
         }
@@ -46,7 +50,7 @@ public class GraphAlgorithm {
 
     }
 
-    public int[][] distanceMatrix(int s){
+    public int[][] distanceMatrix(Graph g, int s){
         int[] aps = g.getAPS();
         int n = aps[0];
          int[][] mDist = new int[n+1][n+1];
@@ -54,7 +58,7 @@ public class GraphAlgorithm {
          mDist[0][0] = n;
         //int n = //getAPS[0] ;
         for(int i=1; i < n; i++){
-            distance(s,mDist[i]);
+            distance(g,s,mDist[i]);
 
         }
         return mDist;
@@ -64,9 +68,6 @@ public class GraphAlgorithm {
 
 
 //Algo des rangs
-
-
-
 
     public int[] rang(Graph g){
         int[] aps = g.getAPS();
@@ -184,7 +185,11 @@ public class GraphAlgorithm {
     // Utilise la matrice d'adjacence
 
     public int[] codagePrufer(Graph g){
+<<<<<<< HEAD
         int[][] matAdj = g.AdjMat(); // On récupère la matrice d'adjacence
+=======
+        int[][] matAdj = g.getAdjMat(); // On récupère la matrice d'adjacence
+>>>>>>> 640e57b3a35b15311781e8348694c8249de8573a
         int n = matAdj[0][0];
         
         int[] codage  = new int[n-1];
@@ -219,26 +224,169 @@ public class GraphAlgorithm {
         
     }
 
+    //Decodage de prufer
+
+    public void decodagePrufer(int[] codage){
+
+        //C represente le codage de Prüfer
+        // C[0] l'indice du dernier élément
+
+        int n = codage[0];
+
+        int[]NbOc = new int[n+3];
+        int[] TabI = new int[n+3];
+
+        // Initialisation des tableaux
+        NbOc[0] = n+2;
+        TabI[0] = n+2;
+
+        for(int i=1;i<= n+2;i++){
+            TabI[i] = 1;
+            NbOc[i] = 0;
+        }
+
+        for(int i=1; i<= n; i++){
+            NbOc[codage[i]]++;
+        }
+
+        for(int i=1; i<= n; i++) {
+            int s = codage[i];
+            System.out.println(s);
+
+            int t = 1;
+
+            while (TabI[t] != 1 || NbOc[t] != 0) {
+                t++;
+            }
+
+            System.out.println(t);
+
+            TabI[t] = 0;
+
+            NbOc[t]--;
+
+        }
+
+        // On affiche à présent le dernier
+
+        int s=1;
+
+        while(TabI[s] == 0){
+            System.out.println(s);
+            s++;
+        }
+
+        while(TabI[s] ==0){
+            System.out.println(s);
+            s++;
+        }
+
+
+
+    }
+
+
 
 
     // Algorithme de Kruskal
 
+
+
+
+    //Algorithme de Tarjan
+    public int[] Tarjan(Graph g, int[] d, int[] low, int[] scc boolean[] stacked, int tricks, int current_scc ){
+        V = graph.length;
+
+        this.graph = graph;
+
+        low = new int[V];
+
+        visited = new boolean[V];
+
+        stack = new Stack<Integer>();
+
+        sccComp = new ArrayList<>();
+
+
+
+        for (int v = 0; v < V; v++)
+
+            if (!visited[v])
+
+                dfs(v);
+
+
+
+        return sccComp;
+
+    }
+
+
     //Algorithme de l'ordonnancement
 
+    public int[] ordonnancement(Graph g ){
+
+        /*
+        * Les sommets ont leur nouvelle numerotation selon les rangs croissants
+        * Le graphe est donné par fp,app et d
+        * d[i] represente le poids de l'arc issu de i
+        * */
+
+        int[] aps = g.getAPS();
+        int[] fs = g.getFS();
+        int[] app = g.getAPP();
+        int[] fpp = g.getFPP();
 
 
+        int n = app[0] ;
+        int kc = 1;
+
+        int[] fpc = new int[fpp[0]+1];
+        int[] appc = new int[n+1];
+        int[] lc = new int[n+1];
+
+        lc[0] = n;
+        // Le sommet 1 est le seul qui n'a pas de predecesseur
+        lc[1] = 0;
+        fpc[1] = 0;
+        appc[1] = 1;
+
+        for( int i= 2;i<= n;i++){
+            //calcule de lc[i] en fonction des predecesseurs de i
+            // valeur maximal du chemin coût d'arc
+            lc[i] = 0;
+            appc[i] = kc+1;
+
+            for(int k = app[i] ; (j = fp[k]) != 0;k++ ){
+                 int lg = lc[j] + d[j];
+
+                 if(lg >= lc[i]){
+                     if(lg > lc[i]){
+                          lc[i] = lg; // nouvelle valeur
+                          kc = appc[i];
+                          fpc[kc] = j;
+
+                     }else{
+                         //lg = lc[i]
+                         kc++;
+                         fpc[kc] = j;
+
+                     }
+                 }
+            }
+            kc++;
+            fpc[kc] = 0;
+
+        }
+
+        fpc[0] = kc;
+
+        return fpc;
+
+    }
 
 
-
-
-
-
-
-
-
-
-
-
+    
 
 
 }
