@@ -8,7 +8,7 @@ import java.util.Hashtable;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class GraphApsFs extends Graph {
+public class  GraphApsFs extends Graph {
     private int[] aps;
     private int[] fs;
     private double[] valueEdge;
@@ -107,7 +107,27 @@ public class GraphApsFs extends Graph {
 
     @Override
     public int[] getFPP() {
-        return new int[0];
+        int []fp = new int [vertexNumber()+edgeNumber()+1];
+        int[] ddi = new int[vertexNumber()+1];
+        ddi = getDDI();
+        int[]app=new int[vertexNumber()+1];
+        app = getAPP();
+        fp[0]=vertexNumber()+edgeNumber();
+        int j;
+        for(int i=1;i<=vertexNumber();++i){
+            for (int k=aps[i];(j=fs[k])!=0;++k){
+                fp[app[j]]=i;
+                app[j]++;
+            }
+        }
+        for(int i=1;i<=vertexNumber();++i){
+            fp[app[i]]=0;
+        }
+        //facultatif
+        for (int i = app[0];i>1;i--){
+            app[i]=app[i-1]+1;
+        }
+        return fp;
     }
 
     @Override
@@ -389,7 +409,7 @@ public class GraphApsFs extends Graph {
             }
         }
 
-        return new Edge[0][];
+        return adjMat;
     }
     private void fs2aps(){
         int n = fs[0];
