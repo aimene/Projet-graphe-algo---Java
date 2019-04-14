@@ -88,7 +88,12 @@ public class GraphAdjMat extends Graph {
 
     @Override
     public void displayOnConsole() {
-
+        for (int i =1;i<=vertexNumber();i++){
+            System.out.print("The vertex "+adjencyMatrix[i][1].getVertexA()+" has like successors : ");
+            for (int j =1;j<=vertexNumber();j++){
+                System.out.print(adjencyMatrix[i][j].getVertexB());
+            }
+        }
     }
 
     @Override
@@ -98,12 +103,7 @@ public class GraphAdjMat extends Graph {
 
     @Override
     public void displayOnGUI() {
-        for (int i =1;i<=vertexNumber();i++){
-            System.out.print("The vertex "+adjencyMatrix[i][1].getVertexA()+" has like successors : ");
-            for (int j =1;j<=vertexNumber();j++){
-                System.out.print(adjencyMatrix[i][j].getVertexB());
-            }
-        }
+
     }
 
     @Override
