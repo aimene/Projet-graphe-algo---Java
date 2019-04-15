@@ -166,23 +166,55 @@ public class GraphAdjMat extends Graph {
     @Override
     public boolean readFromFile(String fileName) {
         Scanner lecteur = null;
+        String ligne;
+        Vertex v =null; String name ; Double value ; Point position;
+        int x ,y;
+        Edge e =null;
 
         try {
-            int k =1;
+            int k =2;
             lecteur = new Scanner(new FileReader(fileName + ".txt"));
-            int numberOfVertex = Integer.parseInt(lecteur.nextLine());
-            int numberOfEdge = Integer.parseInt(lecteur.nextLine());
-            while (lecteur.hasNextLine()) {
-                String ligne = lecteur.nextLine();
-                String[] ligneTableau = ligne.split(" ");
-                int taille = ligneTableau.length;
+            if(lecteur.hasNextLine()) {
+                int numberOfVertex = Integer.parseInt(lecteur.nextLine());
+                int numberOfEdge = Integer.parseInt(lecteur.nextLine());
+                Edge vertexNumber = new Edge(0);
+                vertexNumber.setValue(numberOfEdge);
+                Edge edgeNumber = new Edge(0);
+                edgeNumber.setValue(numberOfEdge);
+                while (lecteur.hasNextLine() && k != 2 + numberOfVertex) {
+                    ligne = lecteur.nextLine();
+                    String[] ligneTableau = ligne.split(" ");
+                    name = ligneTableau[0];
+                    value = Double.parseDouble(ligneTableau[1]);
+                    x = Integer.parseInt(ligneTableau[2]);
+                    y = Integer.parseInt(ligneTableau[3]);
+                    position = new Point(x, y);
+
+                    numerotation.addVertex(new Vertex(name, value, position));
+                    k++;
 
                 }
-
+                k = 1;
+                // lecture des edge
+                Vertex vertexA, vertexB;
+                while (lecteur.hasNextLine()) {
+                    ligne = lecteur.nextLine();
+                    String[] ligneTableau = ligne.split(" ");
+                    vertexA = numerotation.vertexOf(k);
+                    for (int i = 0; i < ligneTableau.length; i = i + 2) {
+                        vertexB = numerotation.vertexOf(Integer.parseInt(ligneTableau[i]));
+                        value = Double.parseDouble(ligneTableau[i + 1]);
+                        adjencyMatrix[numerotation.indexOf(vertexA)][numerotation.indexOf(vertexB)] =
+                                new Edge(vertexA, vertexB, value);
+                    }
+                    k++;
+                }
+                return true;
+            }
             } catch (FileNotFoundException e1) {
             e1.printStackTrace();
-        }
-
+            }
+            return false;
 
 
     }
