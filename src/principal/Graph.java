@@ -61,4 +61,5 @@ public abstract class Graph {
 
     public abstract int edgeNumber();
 
+    public Numerotation getNumerotation(){return  numerotation;}
 }

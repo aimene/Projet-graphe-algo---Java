@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class GraphAdjMat extends Graph {
@@ -236,7 +237,32 @@ public class GraphAdjMat extends Graph {
 
     @Override
     public boolean writeToFile(String fileName) {
-        return false;
+        try {
+            PrintWriter writer= new PrintWriter(fileName+".txt");
+            writer.println(adjencyMatrix[0][0].getValue());
+            writer.println(adjencyMatrix[0][1].getValue());
+            for(int i = 1; i<=vertexNumber();++i){
+                Vertex v = numerotation.vertexOf(i);
+                writer.println(v.getName() + " " + v.getValue() + " "+ v.getPosition().x + " " + v.getPosition().y );
+            }
+            int b ;
+            for (int i  =1;i<=vertexNumber();++i){
+                for (int j = 1;j<=vertexNumber();++j){
+                    if(adjencyMatrix[i][j]!=null){
+                        b=numerotation.indexOf(adjencyMatrix[i][j].getVertexB());
+                        Vertex v1 = numerotation.vertexOf(i);
+                        Vertex v2 = numerotation.vertexOf(j);
+                        writer.print(b+" " + valueEdge(v1,v2) + " ");
+                    }
+                }
+                writer.println();
+            }
+            writer.close();
+            return true;
+
+        }catch (Exception e){
+            return false;
+        }
     }
 
     @Override
