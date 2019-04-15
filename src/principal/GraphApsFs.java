@@ -45,19 +45,12 @@ public class  GraphApsFs extends Graph {
         return ddi;
     }
 
-    @Override
-    public boolean existEdge(Vertex a, Vertex b) {
-        return false;
-    }
+
 
     @Override
-    public boolean existEdge(Edge e) {
-        if( existVertex(e.getVertexA()) && existVertex(e.getVertexB())){
-            int indexB = numerotation.indexOf(e.getVertexB());
-            if(valueEdge(e.getVertexA(),e.getVertexB()) == e.getValue()){
-                return true;
-            }
-            return false;
+    public boolean existEdge(Vertex a, Vertex b) {
+        if( existVertex(a) && existVertex(b)){
+            return true;
         }
         return false;
     }
@@ -74,10 +67,6 @@ public class  GraphApsFs extends Graph {
         return app;
     }
 
-    @Override
-    public int[] getFP() {
-        return new int[0];
-    }
 
     private int[] dist(int s,int[]dist){
         int d=0;
@@ -118,7 +107,7 @@ public class  GraphApsFs extends Graph {
     }
 
     @Override
-    public int[] getFPP() {
+    public int[] getFP() {
         int []fp = new int [vertexNumber()+edgeNumber()+1];
         int[] ddi = new int[vertexNumber()+1];
         ddi = getDDI();
@@ -142,7 +131,7 @@ public class  GraphApsFs extends Graph {
         return fp;
     }
 
-    @Override
+    /*@Override
     public int[] getCFC() {
         int[]prem = new int[vertexNumber()+1];
         int[]pilch = new int[vertexNumber()+1];
@@ -176,7 +165,7 @@ public class  GraphApsFs extends Graph {
         }
         pilch[0]=nb;
         return cfc;
-    }
+    }*/
 
     @Override
     public boolean existVertex(Vertex a) {
@@ -192,6 +181,7 @@ public class  GraphApsFs extends Graph {
             return false;
         }
         numerotation.addVertex(v);
+        int i  = numerotation.indexOf(v);
         return true;
     }
 
@@ -302,7 +292,7 @@ public class  GraphApsFs extends Graph {
 
     @Override
     public boolean addEgde(Edge e){
-        if(existEdge(e)){
+        if(existEdge(e.getVertexA(),e.getVertexB())){
             int[]fsTemp = new int[fs[0]+2];
             double valueEgeTemp[] = new double[fs[0]+2];
             int indexA = numerotation.indexOf(e.getVertexA());
@@ -335,6 +325,25 @@ public class  GraphApsFs extends Graph {
 
     @Override
     public boolean deleteEdge(Vertex a, Vertex b) {
+        if(existVertex(a)&& existVertex(b)){
+            int [] fsTemp = new int[vertexNumber()+edgeNumber()-1];
+             double [] valueEdgeTemp = new  double[vertexNumber()+edgeNumber()-1];
+             fsTemp[0]=vertexNumber()+edgeNumber()-1;
+            for (int i=0;i<=vertexNumber()+edgeNumber()+1;++i){
+                if(b!=(numerotation.vertexOf(i))){
+                    fsTemp[i]=fs[i];
+                    valueEdgeTemp[i]=valueEdge[i];
+                }
+            }
+            fs = new int [vertexNumber()+edgeNumber()-1];
+            valueEdge = new double [vertexNumber()+edgeNumber()-1];
+            for (int i=0;i<vertexNumber()+edgeNumber();++i){
+                fs[i]=fsTemp[i];
+                valueEdge[i]=fsTemp[i];
+            }
+            fs2aps();
+            return true;
+        }
         return false;
     }
 
