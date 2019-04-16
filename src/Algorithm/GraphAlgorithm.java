@@ -1,5 +1,6 @@
 package Algorithm;
 
+import principal.Edge;
 import principal.Graph;
 
 
@@ -283,36 +284,61 @@ public class GraphAlgorithm {
 
     // Algorithme de Kruskal
 
+      //Structure intermdiaire pour l'algorithme de kruskal
+
+      public void fusion(int comp1,int comp2,int[] prem, int[] pilch, int[]cfc){
+        int s = prem[comp1];
+        while(pilch[s]!= 0){
+            s = pilch[s];
+        }
+
+        pilch[s] = prem[comp2];
+
+        while(pilch[s] != 0){
+            s = pilch[s];
+            cfc[s] = comp1;
+        }
+      }
+    
+      public void kruskal(Graph g,Graph t){
+         //Initialisation
+         int n = g.vertexNumber(), m = g.edgeNumber();
+          t.setVertexNumber(n);
+          t.setEdgeNumber(m-1);
+          t.add
 
 
+         int[] prem = new int[n+1];
+         int[] pilch = new int[n+1];
+         int[] cfc = new int[n+1];
 
-    //Algorithme de Tarjan
-    public int[] Tarjan(Graph g, int[] d, int[] low, int[] scc boolean[] stacked, int tricks, int current_scc ){
-        V = graph.length;
+         //Fin d'initialisation
 
-        this.graph = graph;
+          for (int i = 1; i <= n ; i++) {
+              prem[i] = i;
+              pilch[i] = 0;
+              cfc[i] = i;
+          }
 
-        low = new int[V];
+          Edge e ;
+          Edge[][] matrice = g.getAdjMat();
 
-        visited = new boolean[V];
+          for(int i=1; i<= n;i++){
+              for (int j = 1; j <n  ; j++) {
+                   if(i != j){
+                      e = matrice[i][j];
+                      if()
+                   }
+              }
 
-        stack = new Stack<Integer>();
-
-        sccComp = new ArrayList<>();
-
-
-
-        for (int v = 0; v < V; v++)
-
-            if (!visited[v])
-
-                dfs(v);
-
-
-
-        return sccComp;
+          }
 
     }
+
+
+
+
+
 
 
     //Algorithme de l'ordonnancement
@@ -339,6 +365,7 @@ public class GraphAlgorithm {
         int[] lc = new int[n+1];
 
         lc[0] = n;
+
         // Le sommet 1 est le seul qui n'a pas de predecesseur
         lc[1] = 0;
         fpc[1] = 0;
@@ -379,7 +406,7 @@ public class GraphAlgorithm {
     }
 
 
-    
+
 
 
 }

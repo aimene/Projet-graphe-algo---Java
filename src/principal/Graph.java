@@ -62,4 +62,8 @@ public abstract class Graph {
 
     public abstract int edgeNumber();
 
+    public abstract void setVertexNumber(int n);
+
+    public abstract void setEdgeNumber(int n);
+
 }

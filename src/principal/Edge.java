@@ -62,7 +62,7 @@ public class Edge {
     @Override
     public String toString() {
         return "Edge{" +
-                "vertexA = " + vertexA +
+                "   vertexA = " + vertexA +
                 " , vertexB = " + vertexB +
                 " , value = " + value +
                 '}';

@@ -25,6 +25,11 @@ public class GraphApsFs extends Graph {
         return aps[0];
     }
 
+    public  void setVertexNumber(int n){ fs[0] = n;}
+
+    public  void setEdgeNumber(int n){ aps[0] = n ;}
+
+
     @Override
     public int[] getDDI() {
         int[] ddi = new int[vertexNumber() + 1];
@@ -296,5 +301,7 @@ public class GraphApsFs extends Graph {
         g.displayOnConsole();
         //g.writeToFile("fichier");
     }
+
+
 
 }

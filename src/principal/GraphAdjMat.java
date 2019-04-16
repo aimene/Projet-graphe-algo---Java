@@ -234,4 +234,10 @@ public class GraphAdjMat extends Graph {
     public int edgeNumber() {
         return (int)adjencyMatrix[0][1].getValue();
     }
+
+
+    public  void setVertexNumber(int n){  adjencyMatrix[0][0].setValue(n);}
+
+    public  void setEdgeNumber(int n){  adjencyMatrix[0][1].setValue(n);}
+
 }
