@@ -19,6 +19,10 @@ public class Edge {
         this.value = value;
     }
 
+    public Edge(){
+        this(null,null,0);
+    }
+
     public Vertex getVertexA() {
         return vertexA;
     }

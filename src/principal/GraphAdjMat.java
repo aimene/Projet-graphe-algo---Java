@@ -1,7 +1,11 @@
 package principal;
+import java.awt.Point;
 
 
-
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class GraphAdjMat extends Graph {
 
@@ -10,6 +14,7 @@ public class GraphAdjMat extends Graph {
     public GraphAdjMat(Numerotation num) {
         super(num);
     }
+
     public GraphAdjMat(Numerotation num,Edge[][] adjencyMatrix) {
         super(num);
         this.adjencyMatrix=adjencyMatrix;
@@ -32,6 +37,7 @@ public class GraphAdjMat extends Graph {
                 }
             }
             adjencyMatrix=adjencyMatrixTemp;
+            adjencyMatrix[0][0].setValue(vertexNumber()+1);
             numerotation.addVertex(v);
                 return true;
         }else {
@@ -46,6 +52,18 @@ public class GraphAdjMat extends Graph {
                 adjencyMatrix[numerotation.indexOf(v)][i] = null;
                 adjencyMatrix[i][numerotation.indexOf(v)] = null;
             }
+            int nb =0;
+            for (int i = 0; i <= vertexNumber(); i++) {
+               if( existEdge(adjencyMatrix[numerotation.indexOf(v)][i].getVertexA(),adjencyMatrix[numerotation.indexOf(v)][i].getVertexB()) ){
+                   nb++;
+                }
+                if( existEdge(adjencyMatrix[i][numerotation.indexOf(v)].getVertexA(),adjencyMatrix[i][numerotation.indexOf(v)].getVertexB()) ){
+                    nb++;
+                }
+            }
+            // update numver of edge
+            adjencyMatrix[0][1].setValue(edgeNumber()-nb);
+
             numerotation.deleteVertex(v);
             return true;
         }else{
@@ -58,6 +76,8 @@ public class GraphAdjMat extends Graph {
     public boolean addEgde(Edge e) {
         if (numerotation.existVertex(e.getVertexA()) && numerotation.existVertex(e.getVertexB())){
             adjencyMatrix[numerotation.indexOf(e.getVertexA())][numerotation.indexOf(e.getVertexB())]=e ;
+            adjencyMatrix[0][1].setValue(edgeNumber()+1);
+
             return true;
         }else
             return false;
@@ -67,52 +87,137 @@ public class GraphAdjMat extends Graph {
     public boolean deleteEdge(Vertex a, Vertex b) {
         if (numerotation.existVertex(a) && numerotation.existVertex(b)){
             adjencyMatrix[numerotation.indexOf(a)][numerotation.indexOf(b)]=null ;
+            adjencyMatrix[0][1].setValue(edgeNumber()-1);
             return true;
         }else
             return false;
     }
     @Override
     public void readFromKeyBoard() {
-        String reponse = "o";
-        System.out.print("Entrer le nombre de sommets : ");
+        Edge vertexNumber = new Edge(0);
+        Edge edgeNumber = new Edge (0);
         Scanner in = new Scanner(System.in);
+
+        String reponse = "o";
+
+        System.out.print("Entrer le nombre de sommets : ");
         int numberOfVertex = in.nextInt();
+
         System.out.print("Entrer le nombre d'arcs : ");
         int numberOfEdge = in.nextInt();
-        A[i][j] = new int[numberOfEdge+numberOfVertex+1];
-        A[0][0]= numberOfVertex + numberOfEdge;
-        int k = 1;
-        int sommet;
-        for (int i = 1; i <=numberOfVertex; ++i) {
-            System.out.println("Entrer les successeurs du sommet " + i);
-            while (reponse.equals("o")){
-                System.out.println("Entrer le sommet");
-                sommet = in.nextInt();
-                System.out.println("Encore un successeur du sommet " + i + "? o/n");
-                String rep = new String();
-                rep=in.nextLine();
+
+        vertexNumber.setValue(numberOfEdge);
+        edgeNumber.setValue(numberOfEdge);
+
+        adjencyMatrix[0][0]=vertexNumber;
+        adjencyMatrix[0][1]=edgeNumber;
+
+
+        String name ;
+        double value ;
+        int x , y;
+        Vertex v ;
+        int k=0;
+
+        // ajout des sommet
+        while(k==vertexNumber()) {
+            System.out.println("Entrer le sommet " + k+1);
+
+                System.out.println("Entrer le nom du sommet");
+                name = in.nextLine();
+                System.out.println("Entrer la valeur du sommet");
+                value = in.nextDouble();
+                System.out.println("Entrer la position du sommet");
+                System.out.print("Entrer la valeur du X = ");
+                x=in.nextInt();
+                System.out.print("Entrer la valeur du Y = ");
+                y=in.nextInt();
+
+                v =new Vertex(name,value,new Point(x,y));
+              if( addVertex(v))
+                  k++;
+
                 reponse = in.nextLine();
             }
+            k=0;
+        reponse="oui";
+        int indiceSec;
+        double valeur;
 
-            for (int j=1; j <=numberOfEdge; ++j) {
-                System.out.println("Entrer  les successeurs du sommet " + j);
-                while (reponse.equals("n")){
-                    System.out.println("Entrer le sommet");
-                    sommet = in.nextInt();
-                    A[i][j] = Edge(A,s,value);
-                    System.out.println("Encore un successeur du sommet " + i + "? o/n");
-                    String rep = new String();
-                    rep=in.nextLine();
-                    reponse = in.nextLine();
+        // ajout des aretes
+        for (int i = 1; i <= numberOfVertex; ++i) {
+            if(k!=vertexNumber()) {
+                System.out.println("Entrer  les successeurs du sommet " + i);
+                while(reponse.equals("oui")){
+                    System.out.println("Entrer  l'indice du successeurs ");
+                    indiceSec=in.nextInt();
+                    System.out.println("Entrer  la valeur de l'arete  ");
+                    valeur = in.nextDouble();
+                    System.out.println("Voulez vous entrer un autre successeur du sommet   "+ i);
+                    System.out.println("Répodez par oui ou non   ");
+                    reponse=in.nextLine();
+                   if (addEgde(new Edge(numerotation.vertexOf(i),numerotation.vertexOf(indiceSec),valeur)))
+                       k++;
+                   else
+                       System.out.println("Cette arete n'a pas été ajouté ");
                 }
             }
-            k++;
-            A[i][j] = Edge(A,s,value);
-            reponse="o";
-
+        }
+    }
     @Override
     public boolean readFromFile(String fileName) {
-        return false;
+        Scanner lecteur = null;
+        String ligne;
+        Vertex v =null; String name ; Double value ; Point position;
+        int x ,y;
+        Edge e =null;
+
+        try {
+            int k =2;
+            lecteur = new Scanner(new FileReader(fileName + ".txt"));
+            if(lecteur.hasNextLine()) {
+                int numberOfVertex = Integer.parseInt(lecteur.nextLine());
+                int numberOfEdge = Integer.parseInt(lecteur.nextLine());
+                Edge vertexNumber = new Edge(0);
+                vertexNumber.setValue(numberOfEdge);
+                Edge edgeNumber = new Edge(0);
+                edgeNumber.setValue(numberOfEdge);
+                while (lecteur.hasNextLine() && k != 2 + numberOfVertex) {
+                    ligne = lecteur.nextLine();
+                    String[] ligneTableau = ligne.split(" ");
+                    name = ligneTableau[0];
+                    value = Double.parseDouble(ligneTableau[1]);
+                    x = Integer.parseInt(ligneTableau[2]);
+                    y = Integer.parseInt(ligneTableau[3]);
+                    position = new Point(x, y);
+
+                    numerotation.addVertex(new Vertex(name, value, position));
+                    k++;
+
+                }
+                k = 1;
+                // lecture des edge
+                Vertex vertexA, vertexB;
+                while (lecteur.hasNextLine()) {
+                    ligne = lecteur.nextLine();
+                    String[] ligneTableau = ligne.split(" ");
+                    vertexA = numerotation.vertexOf(k);
+                    for (int i = 0; i < ligneTableau.length; i = i + 2) {
+                        vertexB = numerotation.vertexOf(Integer.parseInt(ligneTableau[i]));
+                        value = Double.parseDouble(ligneTableau[i + 1]);
+                        adjencyMatrix[numerotation.indexOf(vertexA)][numerotation.indexOf(vertexB)] =
+                                new Edge(vertexA, vertexB, value);
+                    }
+                    k++;
+                }
+                return true;
+            }
+            } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+            }
+            return false;
+
+
     }
 
     @Override
@@ -122,12 +227,42 @@ public class GraphAdjMat extends Graph {
 
     @Override
     public void displayOnConsole() {
-
+        for (int i =1;i<=vertexNumber();i++){
+            System.out.print("The vertex "+adjencyMatrix[i][1].getVertexA()+" has like successors : ");
+            for (int j =1;j<=vertexNumber();j++){
+                System.out.print(adjencyMatrix[i][j].getVertexB());
+            }
+        }
     }
 
     @Override
     public boolean writeToFile(String fileName) {
-        return false;
+        try {
+            PrintWriter writer= new PrintWriter(fileName+".txt");
+            writer.println(adjencyMatrix[0][0].getValue());
+            writer.println(adjencyMatrix[0][1].getValue());
+            for(int i = 1; i<=vertexNumber();++i){
+                Vertex v = numerotation.vertexOf(i);
+                writer.println(v.getName() + " " + v.getValue() + " "+ v.getPosition().x + " " + v.getPosition().y );
+            }
+            int b ;
+            for (int i  =1;i<=vertexNumber();++i){
+                for (int j = 1;j<=vertexNumber();++j){
+                    if(adjencyMatrix[i][j]!=null){
+                        b=numerotation.indexOf(adjencyMatrix[i][j].getVertexB());
+                        Vertex v1 = numerotation.vertexOf(i);
+                        Vertex v2 = numerotation.vertexOf(j);
+                        writer.print(b+" " + valueEdge(v1,v2) + " ");
+                    }
+                }
+                writer.println();
+            }
+            writer.close();
+            return true;
+
+        }catch (Exception e){
+            return false;
+        }
     }
 
     @Override
@@ -180,7 +315,7 @@ public class GraphAdjMat extends Graph {
 
         int ddi [] = new int[vertexNumber()+1];
         ddi[0]=vertexNumber();
-        int [] aps =getAPS();
+
         int [] fs = getFS();
 
         for (int i =1;i<=vertexNumber(); i++){
@@ -191,6 +326,44 @@ public class GraphAdjMat extends Graph {
         }
         return ddi;
     }
+
+    @Override
+    public int[] getAPP() {
+        int [] ddi = getDDI();
+        int [] app = new int[vertexNumber()+1];
+        app[0]=vertexNumber();
+        app[1]=1;
+        for (int i = 2 ; i <= vertexNumber(); i++){
+            app[i]=app[i-1]+ddi[i-1]+1;
+        }
+        return app;
+    }
+
+    @Override
+    public int[] getFP() {
+        int fp [] = new int [vertexNumber()+1];
+        int app [] = getAPP();
+        int fs [] = getFS();
+        int aps [] = getAPS();
+        fp[0]= fs[0];
+        int j=0;
+        for (int i =1; i<=aps[0];i++){
+            for(int k = aps[i];(j = fs[k])!=0; k++){
+                fp[app[j]]=i;
+                app[j]++;
+            }
+        }
+        for (int i=1 ;i<=aps[0];i++){
+            fp[app[i]]=0;
+        }
+        for (int i=app[0] ;i>1;i--){
+            app[i]=app[i-1]+1;
+        }
+        app[1]=1;
+        return app;
+    }
+
+
 
     @Override
     public Edge[][] getAdjMat() {

@@ -3,12 +3,11 @@ package Algorithm;
 import principal.Edge;
 import principal.Graph;
 
-
 public class GraphAlgorithm {
 
     //Algo des distances
 
-    public int[] distance(Graph g,int s,int[] distance){
+    public int[] distance(Graph g, int s, int[] distance){
 
         int[] aps = g.getAPS();
         int[] fs = g.getFS();
@@ -124,6 +123,43 @@ public class GraphAlgorithm {
     }
 
 
+    public int[] getCFC(boolean g) {
+        int n = g.vertexNumber();
+        int[]prem = new int[n+1];
+        int[]pilch = new int[n+1];
+        int[]cfc = new int[n+1];
+        pilch[0]=0;
+        int s=0;
+        int dist[][] = new int[n+1][n+1];
+        dist = distanceMatrix(g,s);
+        for (int i=0;i<n;++i){
+            cfc[i]=0;
+        }
+        cfc[0]=n;
+        int nb=0;
+        for (int i=1;i<= n;++i){
+            if(cfc[i]==0){
+                nb++;
+                cfc[i]=nb;
+                prem[nb]=i;
+                s=i;
+            }
+            for (int j=i+1;j<= n;++j){
+                if(cfc[j]==0){
+                    if(dist[i][j]!=-1 && dist[j][i]!=-1){
+                        pilch[s]=j;
+                        s=j;
+                        cfc[j]=nb;
+                    }
+                }
+            }
+            pilch[s]=0;
+        }
+        pilch[0]=nb;
+        return cfc;
+    }
+
+
     //Calculer la matrice des Cout avec le tableau qui contient les poids des différentes arrêtes, arc
     public int[] Dijkstra(Graph g,int[][]Cout ,int s){
         int[] aps = g.getAPS();
@@ -183,7 +219,9 @@ public class GraphAlgorithm {
     // Utilise la matrice d'adjacence
 
     public int[] codagePrufer(Graph g){
-        int[][] matAdj = g.getAdjMat(); // On récupère la matrice d'adjacence
+
+        int[][] matAdj = g.AdjMat(); // On récupère la matrice d'adjacence
+
         int n = matAdj[0][0];
         
         int[] codage  = new int[n-1];
@@ -300,12 +338,14 @@ public class GraphAlgorithm {
         }
       }
     
-      public void kruskal(Graph g,Graph t){
+      public Graph kruskal(Graph g,Graph t){
          //Initialisation
          int n = g.vertexNumber(), m = g.edgeNumber();
           t.setVertexNumber(n);
           t.setEdgeNumber(m-1);
-          t.add
+          Edge defaultEdge  = new Edge();
+          t.addEgde(defaultEdge);
+
 
 
          int[] prem = new int[n+1];
@@ -327,11 +367,18 @@ public class GraphAlgorithm {
               for (int j = 1; j <n  ; j++) {
                    if(i != j){
                       e = matrice[i][j];
-                      if()
+                      int sd = g.getNumerotation().indexOf(e.getVertexA());
+                      int sa = g.getNumerotation().indexOf(e.getVertexB());
+                      if(cfc[sd] != cfc[sa]) {
+                          t.addEgde(e);
+                          fusion(cfc[sd],cfc[sa],prem,pilch,cfc);
+                      }
                    }
               }
 
           }
+
+          return t;
 
     }
 

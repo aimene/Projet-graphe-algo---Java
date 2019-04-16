@@ -8,13 +8,19 @@ import java.util.Hashtable;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class GraphApsFs extends Graph {
+public class  GraphApsFs extends Graph {
     private int[] aps;
     private int[] fs;
     private double[] valueEdge;
 
-    public GraphApsFs(Numerotation num, int numberOfVertex, int numberOfEdge) {
-        super(num, numberOfVertex, numberOfEdge);
+    public GraphApsFs(Numerotation num) {
+        super(num);
+
+    }
+    public GraphApsFs(Numerotation num,int[]fs){
+        this(num);
+        this.fs=fs;
+        fs2aps();
     }
 
     public int vertexNumber() {
@@ -37,23 +43,134 @@ public class GraphApsFs extends Graph {
         for (int i = 0; i <= vertexNumber(); ++i) {
             ddi[i] = 0;
         }
+        ddi[0]=aps[0];
         for (int i = 1; i <= vertexNumber() + edgeNumber(); ++i) {
             ddi[fs[i]]++;
         }
         return ddi;
     }
 
+
+
     @Override
-    public boolean existEdge(Edge e) {
-        if( existVertex(e.getVertexA()) && existVertex(e.getVertexB())){
-            int indexB = numerotation.indexOf(e.getVertexB());
-            if(valueEdge(e.getVertexA(),e.getVertexB()) == e.getValue()){
-                return true;
-            }
-            return false;
+    public boolean existEdge(Vertex a, Vertex b) {
+        if( existVertex(a) && existVertex(b)){
+            return true;
         }
         return false;
     }
+
+    @Override
+    public int[] getAPP() {
+        int[] app = new int[vertexNumber()+1];
+        app[1]=1;
+        int[] ddi=new int[vertexNumber()+1];
+        ddi=getDDI();
+        for (int i=2;i<=vertexNumber();++i){
+            app[i+1]=app[i-1]+ddi[i-1] + 1;
+        }
+        return app;
+    }
+
+
+    private int[] dist(int s,int[]dist){
+        int d=0;
+        int t=0;
+        int p,q;
+        p=q=1;
+        int x,y;
+        dist = new int[vertexNumber()+1];
+        int[] fa = new int[vertexNumber()-1];
+        fa[1]=s;
+        dist[s]=0;
+        for (int i=1;i<=vertexNumber();++i){
+            dist[i]=-1;
+        }
+        while (t<q){
+            d++;
+            for (int i=t+1;i<=q;++i){
+                x=fa[i];
+                for (int j =aps[x];(y=fs[j])!=0;++j){
+                    if(dist[y]==-1){
+                        dist[y]=d;
+                        fa[++p]=y;
+                    }
+                }
+            }
+            t=q;
+            q=p;
+        }
+        return dist;
+    }
+    private int[][] matDist(){
+        int matDist[][] = new int[vertexNumber()+1][vertexNumber()+1];
+        matDist[0][0]=vertexNumber();
+        for (int s=1;s<=vertexNumber();++s){
+            dist(s,matDist[s]);
+        }
+        return matDist;
+    }
+
+    @Override
+    public int[] getFP() {
+        int []fp = new int [vertexNumber()+edgeNumber()+1];
+        int[] ddi = new int[vertexNumber()+1];
+        ddi = getDDI();
+        int[]app=new int[vertexNumber()+1];
+        app = getAPP();
+        fp[0]=vertexNumber()+edgeNumber();
+        int j;
+        for(int i=1;i<=vertexNumber();++i){
+            for (int k=aps[i];(j=fs[k])!=0;++k){
+                fp[app[j]]=i;
+                app[j]++;
+            }
+        }
+        for(int i=1;i<=vertexNumber();++i){
+            fp[app[i]]=0;
+        }
+        //facultatif
+        for (int i = app[0];i>1;i--){
+            app[i]=app[i-1]+1;
+        }
+        return fp;
+    }
+
+    /*@Override
+    public int[] getCFC() {
+        int[]prem = new int[vertexNumber()+1];
+        int[]pilch = new int[vertexNumber()+1];
+        int[]cfc = new int[vertexNumber()+1];
+        pilch[0]=0;
+        int s=0;
+        int dist[][] = new int[vertexNumber()+1][vertexNumber()+1];
+        dist = matDist();
+        for (int i=0;i<vertexNumber();++i){
+            cfc[i]=0;
+        }
+        cfc[0]=vertexNumber();
+        int nb=0;
+        for (int i=1;i<=vertexNumber();++i){
+            if(cfc[i]==0){
+                nb++;
+                cfc[i]=nb;
+                prem[nb]=i;
+                s=i;
+            }
+            for (int j=i+1;j<=vertexNumber();++j){
+                if(cfc[j]==0){
+                    if(dist[i][j]!=-1 && dist[j][i]!=-1){
+                        pilch[s]=j;
+                        s=j;
+                        cfc[j]=nb;
+                    }
+                }
+            }
+            pilch[s]=0;
+        }
+        pilch[0]=nb;
+        return cfc;
+    }*/
 
     @Override
     public boolean existVertex(Vertex a) {
@@ -69,6 +186,7 @@ public class GraphApsFs extends Graph {
             return false;
         }
         numerotation.addVertex(v);
+        int i  = numerotation.indexOf(v);
         return true;
     }
 
@@ -168,7 +286,7 @@ public class GraphApsFs extends Graph {
     @Override
     public Graph copyGraph() { // à revoir
         Numerotation n = new Numerotation();
-        GraphApsFs graph = new GraphApsFs(n,vertexNumber(),edgeNumber());
+        GraphApsFs graph = new GraphApsFs(n);
         for (int i=0;i<fs[0];++i){
             graph.fs[i]= fs[i];
             graph.valueEdge[i]=valueEdge[i];
@@ -179,7 +297,7 @@ public class GraphApsFs extends Graph {
 
     @Override
     public boolean addEgde(Edge e){
-        if(existEdge(e)){
+        if(existEdge(e.getVertexA(),e.getVertexB())){
             int[]fsTemp = new int[fs[0]+2];
             double valueEgeTemp[] = new double[fs[0]+2];
             int indexA = numerotation.indexOf(e.getVertexA());
@@ -212,6 +330,25 @@ public class GraphApsFs extends Graph {
 
     @Override
     public boolean deleteEdge(Vertex a, Vertex b) {
+        if(existVertex(a)&& existVertex(b)){
+            int [] fsTemp = new int[vertexNumber()+edgeNumber()-1];
+             double [] valueEdgeTemp = new  double[vertexNumber()+edgeNumber()-1];
+             fsTemp[0]=vertexNumber()+edgeNumber()-1;
+            for (int i=0;i<=vertexNumber()+edgeNumber()+1;++i){
+                if(b!=(numerotation.vertexOf(i))){
+                    fsTemp[i]=fs[i];
+                    valueEdgeTemp[i]=valueEdge[i];
+                }
+            }
+            fs = new int [vertexNumber()+edgeNumber()-1];
+            valueEdge = new double [vertexNumber()+edgeNumber()-1];
+            for (int i=0;i<vertexNumber()+edgeNumber();++i){
+                fs[i]=fsTemp[i];
+                valueEdge[i]=fsTemp[i];
+            }
+            fs2aps();
+            return true;
+        }
         return false;
     }
 
@@ -276,9 +413,29 @@ public class GraphApsFs extends Graph {
     }
 
     @Override
-    public Edge[][] getAdjMat() {// à faire
+    public Edge[][] getAdjMat() {
+        Edge n = new Edge(vertexNumber());
+        Edge m = new Edge(edgeNumber());
         Edge adjMat[][] = new Edge[vertexNumber() + 1][vertexNumber() + 1];
-        return new Edge[0][];
+        adjMat[0][0]=n;
+        adjMat[0][1]=m;
+        int fsIndice;
+        for(int j=1;j<=vertexNumber();++j){
+            fsIndice=aps[j];
+            for (int k=1;k<=vertexNumber();++k ){
+                while (fs[fsIndice]!=0){
+                    if(fs[fsIndice]==k){
+                        Vertex v1 = numerotation.vertexOf(j);
+                        Vertex v2 = numerotation.vertexOf(k);
+                        adjMat[j][k]=new Edge(v1,v2,valueEdge(v1,v2));
+                    }
+                    fsIndice++;
+                }
+                fsIndice=aps[j];
+            }
+        }
+
+        return adjMat;
     }
     private void fs2aps(){
         int n = fs[0];
@@ -296,7 +453,7 @@ public class GraphApsFs extends Graph {
     }
     public static void main(String[] args) {
         Numerotation n = new Numerotation();
-        GraphApsFs g = new GraphApsFs(n, 5, 5);
+        GraphApsFs g = new GraphApsFs(n);
         g.readFromKeyBoard();
         g.displayOnConsole();
         //g.writeToFile("fichier");
