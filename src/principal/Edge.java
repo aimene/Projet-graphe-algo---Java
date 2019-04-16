@@ -47,6 +47,10 @@ public class Edge {
         this.value = value;
     }
 
+    public void lessValue(){ this.value -= 1; }
+
+    public void moreValue(){ this.value += 1; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

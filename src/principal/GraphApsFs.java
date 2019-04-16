@@ -136,41 +136,6 @@ public class  GraphApsFs extends Graph {
         return fp;
     }
 
-    /*@Override
-    public int[] getCFC() {
-        int[]prem = new int[vertexNumber()+1];
-        int[]pilch = new int[vertexNumber()+1];
-        int[]cfc = new int[vertexNumber()+1];
-        pilch[0]=0;
-        int s=0;
-        int dist[][] = new int[vertexNumber()+1][vertexNumber()+1];
-        dist = matDist();
-        for (int i=0;i<vertexNumber();++i){
-            cfc[i]=0;
-        }
-        cfc[0]=vertexNumber();
-        int nb=0;
-        for (int i=1;i<=vertexNumber();++i){
-            if(cfc[i]==0){
-                nb++;
-                cfc[i]=nb;
-                prem[nb]=i;
-                s=i;
-            }
-            for (int j=i+1;j<=vertexNumber();++j){
-                if(cfc[j]==0){
-                    if(dist[i][j]!=-1 && dist[j][i]!=-1){
-                        pilch[s]=j;
-                        s=j;
-                        cfc[j]=nb;
-                    }
-                }
-            }
-            pilch[s]=0;
-        }
-        pilch[0]=nb;
-        return cfc;
-    }*/
 
     @Override
     public boolean existVertex(Vertex a) {
@@ -281,6 +246,11 @@ public class  GraphApsFs extends Graph {
         Vertex v1 = numerotation.vertexOf(a);
         Vertex v2 = numerotation.vertexOf(b);
         return valueEdge(v1,v2);
+    }
+
+    @Override
+    public void setValueEdge(int i, int j, int n) {
+
     }
 
     @Override
