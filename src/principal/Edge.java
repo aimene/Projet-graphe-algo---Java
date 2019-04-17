@@ -1,6 +1,6 @@
 package principal;
 
-import java.util.Objects;
+import java.util.*;
 
 public class Edge {
     private Vertex vertexA;
@@ -14,9 +14,12 @@ public class Edge {
         this.value = value;
     }
     public Edge( double value) {
-        this.vertexA = null;
-        this.vertexB = null;
-        this.value = value;
+        this(null,null,value);
+    }
+
+    public Edge(Vertex vertexA, Vertex vertexB){
+        this(vertexA,vertexB, 0.0);
+        AllEdges.add(this);
     }
 
     public Edge(){
@@ -75,5 +78,20 @@ public class Edge {
                 " , value = " + value +
                 '}';
     }
+
+    /*
+     * Structure utile pour la partie graphique
+     */
+    private static Collection<Edge> AllEdges = new Vector<Edge>();
+
+    public static int nombreAretes() {
+        return AllEdges.size();
+    }
+
+    public static Iterator<Edge> iterator() {
+        return AllEdges.iterator();
+    }
+
+
 
 }

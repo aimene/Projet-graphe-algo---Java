@@ -431,7 +431,7 @@ public class GraphAlgorithm {
             appc[i] = kc+1;
 
             for(int k = app[i];((j = fpp[k]) != 0) ;k++ ){
-                 int lg = lc[j] + d[j];
+                 int lg = lc[j]; //d[j];
 
                  if(lg >= lc[i]){
                      if(lg > lc[i]){

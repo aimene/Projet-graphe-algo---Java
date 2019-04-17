@@ -1,6 +1,9 @@
 package principal;
 
 import java.awt.Point;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Objects;
 
 public class Vertex {
@@ -15,13 +18,19 @@ public class Vertex {
     public Vertex(String name, double value,  Point position) {
         this.name = name;
         this.value = value;
-
         this.position = position;
+        AllVertexes.put(name,this);
     }
 
     public Vertex() {
         this("", 0.0d,  new Point(0, 0));
     }
+
+    public Vertex(int x, int y) {
+        this("s" + AllVertexes.size(),0.0, new Point(x, y));
+    }
+
+
 
     public String getName() {
         return name;
@@ -44,6 +53,7 @@ public class Vertex {
     public Point getPosition() {
         return position;
     }
+
 
     public void setPosition(Point position) {
         this.position = position;
@@ -73,4 +83,22 @@ public class Vertex {
                 ", position=" + position +
                 '}';
     }
+
+    //Partie utile pour la classe GraphiqueGraphe
+
+    private static Map<String, Vertex> AllVertexes = new HashMap<String, Vertex>();
+
+    public static int nombreSommets() {
+        return AllVertexes.size();
+    }
+
+    public static Vertex trouverSommet(String etiquette) {
+        return AllVertexes.get(etiquette);
+    }
+
+    public static Iterator<Vertex> iterator() {
+        return AllVertexes.values().iterator();
+    }
+
+
 }
