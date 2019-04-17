@@ -1,5 +1,6 @@
 package Algorithm;
 
+import principal.Edge;
 import principal.Graph;
 
 
@@ -123,6 +124,43 @@ public class GraphAlgorithm {
     }
 
 
+    public int[] getCFC(Graph g) {
+        int n = g.vertexNumber();
+        int[]prem = new int[n+1];
+        int[]pilch = new int[n+1];
+        int[]cfc = new int[n+1];
+        pilch[0]=0;
+        int s=0;
+        int dist[][] = new int[n+1][n+1];
+        dist = distanceMatrix(g,s);
+        for (int i=0;i<n;++i){
+            cfc[i]=0;
+        }
+        cfc[0]=n;
+        int nb=0;
+        for (int i=1;i<= n;++i){
+            if(cfc[i]==0){
+                nb++;
+                cfc[i]=nb;
+                prem[nb]=i;
+                s=i;
+            }
+            for (int j=i+1;j<= n;++j){
+                if(cfc[j]==0){
+                    if(dist[i][j]!=-1 && dist[j][i]!=-1){
+                        pilch[s]=j;
+                        s=j;
+                        cfc[j]=nb;
+                    }
+                }
+            }
+            pilch[s]=0;
+        }
+        pilch[0]=nb;
+        return cfc;
+    }
+
+
     //Calculer la matrice des Cout avec le tableau qui contient les poids des différentes arrêtes, arc
     public int[] Dijkstra(Graph g,int[][]Cout ,int s){
         int[] aps = g.getAPS();
@@ -145,6 +183,7 @@ public class GraphAlgorithm {
 
         tabBool[s] = false;
         distance[s] =0;
+        int k = 0;
 
         for(int cpt = 0; cpt<n; cpt++){
             max = MAXPOIDS;
@@ -156,7 +195,7 @@ public class GraphAlgorithm {
                 if(distance[j] != MAXPOIDS){
 
                     tabBool[j] = false;
-                    for(int l = aps[j]; (k = fs[l]!=0) ;l++){
+                    for(int l = aps[j]; ((k = fs[l])!=0) ;l++){
                         if(tabBool[k]){
                             v = distance[j] + Cout[j][k];
                             if(v < distance[k]){
@@ -182,35 +221,38 @@ public class GraphAlgorithm {
     // Utilise la matrice d'adjacence
 
     public int[] codagePrufer(Graph g){
+        Graph copie=g.copyGraph();
+        Edge[][] matAdj = copie.getAdjMat(); // On récupère la matrice d'adjacence
 
-        int[][] matAdj = g.AdjMat(); // On récupère la matrice d'adjacence
-
-        int n = matAdj[0][0];
+        int n = g.vertexNumber();
         
-        int[] codage  = new int[n-1];
-        codage[0] = n-2;
+        int[] codage  = new int[n - 1];
+        codage[0] = n-2 ;
 
         for (int i = 1; i <= n ; i++) {
-            matAdj[i][0] = 0;
+            matAdj[i][0].setValue(0);
+
         }
 
         for (int i = 1; i <= n ; i++) {
             for (int j = 1; j <= n; j++) {
-                if (matAdj[i][j] == 1) matAdj[i][0]++;
+                if (matAdj[i][j].getValue() == 1){
+                    matAdj[i][0].moreValue();
+                }
             }
         }
 
             for(int k=1; k <=n-2; k++){
                 int i=1, j=1;
 
-                for(;matAdj[i][0] != 1;i++);
-                for(;matAdj[i][j] != 1;j++);
+                for(;matAdj[i][0].getValue() != 1;i++);
+                for(;matAdj[i][j].getValue() != 1;j++);
 
                 codage[k] = j;
-                matAdj[i][j] = 0;
-                matAdj[j][i] = 0;
-                matAdj[i][0] = 0;
-                matAdj[j][0]-- ;
+                matAdj[i][j].setValue(0);
+                matAdj[j][i].setValue(0);
+                matAdj[i][0].setValue(0);
+                matAdj[j][0].lessValue();
 
 
             }
@@ -285,36 +327,70 @@ public class GraphAlgorithm {
 
     // Algorithme de Kruskal
 
+      //Structure intermdiaire pour l'algorithme de kruskal
+
+      public void fusion(int comp1,int comp2,int[] prem, int[] pilch, int[]cfc){
+        int s = prem[comp1];
+        while(pilch[s]!= 0){
+            s = pilch[s];
+        }
+
+        pilch[s] = prem[comp2];
+
+        while(pilch[s] != 0){
+            s = pilch[s];
+            cfc[s] = comp1;
+        }
+      }
+    
+      public Graph kruskal(Graph g,Graph t){
+         //Initialisation
+         int n = g.vertexNumber(), m = g.edgeNumber();
+          t.setVertexNumber(n);
+          t.setEdgeNumber(m-1);
+          Edge defaultEdge  = new Edge();
+          t.addEgde(defaultEdge);
 
 
 
-    //Algorithme de Tarjan
-    public int[] Tarjan(Graph g, int[] d, int[] low, int[] scc boolean[] stacked, int tricks, int current_scc ){
-        V = graph.length;
+         int[] prem = new int[n+1];
+         int[] pilch = new int[n+1];
+         int[] cfc = new int[n+1];
 
-        this.graph = graph;
+         //Fin d'initialisation
 
-        low = new int[V];
+          for (int i = 1; i <= n ; i++) {
+              prem[i] = i;
+              pilch[i] = 0;
+              cfc[i] = i;
+          }
 
-        visited = new boolean[V];
+          Edge e ;
+          Edge[][] matrice = g.getAdjMat();
 
-        stack = new Stack<Integer>();
+          for(int i=1; i<= n;i++){
+              for (int j = 1; j <n  ; j++) {
+                   if(i != j){
+                      e = matrice[i][j];
+                      int sd = g.getNumerotation().indexOf(e.getVertexA());
+                      int sa = g.getNumerotation().indexOf(e.getVertexB());
+                      if(cfc[sd] != cfc[sa]) {
+                          t.addEgde(e);
+                          fusion(cfc[sd],cfc[sa],prem,pilch,cfc);
+                      }
+                   }
+              }
 
-        sccComp = new ArrayList<>();
+          }
 
-
-
-        for (int v = 0; v < V; v++)
-
-            if (!visited[v])
-
-                dfs(v);
-
-
-
-        return sccComp;
+          return t;
 
     }
+
+
+
+
+
 
 
     //Algorithme de l'ordonnancement
@@ -327,10 +403,11 @@ public class GraphAlgorithm {
         * d[i] represente le poids de l'arc issu de i
         * */
 
+
         int[] aps = g.getAPS();
         int[] fs = g.getFS();
         int[] app = g.getAPP();
-        int[] fpp = g.getFPP();
+        int[] fpp = g.getFP();
 
 
         int n = app[0] ;
@@ -339,8 +416,10 @@ public class GraphAlgorithm {
         int[] fpc = new int[fpp[0]+1];
         int[] appc = new int[n+1];
         int[] lc = new int[n+1];
+        int j = 0;
 
         lc[0] = n;
+
         // Le sommet 1 est le seul qui n'a pas de predecesseur
         lc[1] = 0;
         fpc[1] = 0;
@@ -352,8 +431,8 @@ public class GraphAlgorithm {
             lc[i] = 0;
             appc[i] = kc+1;
 
-            for(int k = app[i] ; (j = fp[k]) != 0;k++ ){
-                 int lg = lc[j] + d[j];
+            for(int k = app[i];((j = fpp[k]) != 0) ;k++ ){
+                 int lg = lc[j]; //d[j];
 
                  if(lg >= lc[i]){
                      if(lg > lc[i]){

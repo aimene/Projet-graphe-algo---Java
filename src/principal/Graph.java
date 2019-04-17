@@ -57,9 +57,17 @@ public abstract class Graph {
 
     public abstract double valueEdge(int a, int b);
 
+    public abstract void setValueEdge(int i, int j,int n);
+
+
     public abstract int vertexNumber();
 
     public abstract int edgeNumber();
 
+    public abstract void setVertexNumber(int n);
+
+    public abstract void setEdgeNumber(int n);
+
     public Numerotation getNumerotation(){return  numerotation;}
+
 }

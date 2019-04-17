@@ -41,6 +41,11 @@ public class  GraphApsFs extends Graph {
         return fs[0]-aps[0];
     }
 
+    public  void setVertexNumber(int n){ fs[0] = n;}
+
+    public  void setEdgeNumber(int n){ aps[0] = n ;}
+
+
     @Override
     public int[] getDDI() {
         int[] ddi = new int[vertexNumber() + 1];
@@ -327,7 +332,14 @@ public class  GraphApsFs extends Graph {
     }
 
     @Override
+
+    public void setValueEdge(int i, int j, int n) {
+
+    }
+
+    @Override
     public Graph copyGraph() {
+
         Numerotation n = new Numerotation();
         GraphApsFs graph = new GraphApsFs(n);
         for (int i=0;i<fs[0];++i){
@@ -516,15 +528,15 @@ public class  GraphApsFs extends Graph {
     }
     public static void main(String[] args) {
         Numerotation n = new Numerotation();
-        /*Vertex v1 =new Vertex("un",2.5,new Point(100,200));
+        Vertex v1 =new Vertex("un",2.5,new Point(100,200));
         Vertex v2 = new Vertex("Deux",3.1,new Point(25,50));
         n.addVertex(v1);
         n.addVertex(v2);
         Vector<Vertex> V = new Vector<Vertex>();
-        System.out.println(V.size());*/
+        System.out.println(V.size());
         GraphApsFs g = new GraphApsFs(n);
 
-        /*g.readFromKeyBoard();
+        g.readFromKeyBoard();
         g.fs2aps();
         g.displayOnConsole();
         g.addVertex(v1);
@@ -535,12 +547,14 @@ public class  GraphApsFs extends Graph {
         for (int i=1;i<V.size();++i){
             System.out.println(n.indexOf(V.get(i)));
         }
-        g.writeToFile("fichier");*/
+        g.writeToFile("fichier");
         boolean t;
         t = g.readFromFile("fichier.txt");
         System.out.println(t);
         g.fs2aps();
         g.displayOnConsole();
     }
+
+
 
 }
