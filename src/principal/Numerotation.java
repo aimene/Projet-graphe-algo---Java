@@ -34,10 +34,10 @@ public class Numerotation {
     }
 
     public int indexOf(Vertex v){
-        if (vertexHashTable.contains(v))
+        //if (vertexHashTable.contains(v))
             return vertexHashTable.get(v);
-        else
-            return -1;
+        //else
+            //return -1;
     }
     public Vector<Vertex> getAllVertex(){
         return vertex;
@@ -47,7 +47,8 @@ public class Numerotation {
         if(!existVertex(v)){
             counter++;
             vertexHashTable.put( v, counter);
-            vertex.set(counter, v);
+            vertex.setSize(counter); // ce que j'ai ajoute : oumar
+            vertex.add(counter, v); // change : oumar
             return true;
         }
         return false;

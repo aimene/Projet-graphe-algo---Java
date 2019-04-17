@@ -2,10 +2,7 @@ package Algorithm;
 
 import principal.Graph;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 640e57b3a35b15311781e8348694c8249de8573a
 public class GraphAlgorithm {
 
     //Algo des distances
@@ -384,7 +381,7 @@ public class GraphAlgorithm {
     }
 
 
-    
+
 
 
 }
