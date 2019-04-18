@@ -13,6 +13,8 @@ public class GraphAdjMat extends Graph {
 
     public GraphAdjMat(Numerotation num) {
         super(num);
+        adjencyMatrix= new Edge[1][1];
+        adjencyMatrix[0][0]= new Edge(0);
     }
 
     public GraphAdjMat(Numerotation num, Edge[][] adjencyMatrix) {
@@ -29,17 +31,29 @@ public class GraphAdjMat extends Graph {
     @Override
     public boolean addVertex(Vertex v) {
         if (!numerotation.existVertex(v)) {
-            Edge[][] adjencyMatrixTemp = new Edge[vertexNumber() + 1][vertexNumber() + 1];
-            for (int i = 1; i <= vertexNumber(); i++) {
-                for (int j = 1; j <= vertexNumber(); j++) {
-                    adjencyMatrixTemp[i][j] = adjencyMatrix[i][j];
+            Edge[][] adjencyMatrixTemp = new Edge[vertexNumber() + 2][vertexNumber() + 2];
+            if (vertexNumber()==0){
+            }else {
+
+
+
+                for (int i = 1; i <= vertexNumber(); i++) {
+                    for (int j = 1; j <= vertexNumber(); j++) {
+                        adjencyMatrixTemp[i][j] = adjencyMatrix[i][j];
+                    }
                 }
+
+                adjencyMatrixTemp[0][1]=adjencyMatrix[0][1];
             }
+
+            adjencyMatrix[0][0].setValue(vertexNumber() +1);
+            adjencyMatrixTemp[0][0]=adjencyMatrix[0][0];
             adjencyMatrix = adjencyMatrixTemp;
-            adjencyMatrix[0][0].setValue(vertexNumber() + 1);
+            adjencyMatrix[0][0].setValue(vertexNumber() );
             numerotation.addVertex(v);
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -106,8 +120,10 @@ public class GraphAdjMat extends Graph {
         System.out.print("Entrer le nombre d'arcs : ");
         int numberOfEdge = in.nextInt();
 
-        vertexNumber.setValue(numberOfEdge);
+        vertexNumber.setValue(numberOfVertex);
         edgeNumber.setValue(numberOfEdge);
+
+        adjencyMatrix= new Edge[numberOfVertex+1][numberOfVertex+1];
 
         adjencyMatrix[0][0] = vertexNumber;
         adjencyMatrix[0][1] = edgeNumber;
@@ -117,14 +133,14 @@ public class GraphAdjMat extends Graph {
         double value;
         int x, y;
         Vertex v;
-        int k = 0;
+        int k = 1;
 
         // ajout des sommet
-        while (k == vertexNumber()) {
-            System.out.println("Entrer le sommet " + k + 1);
+        while (k <= vertexNumber()) {
+            System.out.println("Entrer le sommet " + (k ));
 
             System.out.println("Entrer le nom du sommet");
-            name = in.nextLine();
+            name = in.next();
             System.out.println("Entrer la valeur du sommet");
             value = in.nextDouble();
             System.out.println("Entrer la position du sommet");
@@ -146,9 +162,9 @@ public class GraphAdjMat extends Graph {
 
         // ajout des aretes
         for (int i = 1; i <= numberOfVertex; ++i) {
-            if (k != vertexNumber()) {
+
                 System.out.println("Entrer  les successeurs du sommet " + i);
-                while (reponse.equals("oui")) {
+                while (reponse.equals("oui") && k != edgeNumber()) {
                     System.out.println("Entrer  l'indice du successeurs ");
                     indiceSec = in.nextInt();
                     System.out.println("Entrer  la valeur de l'arete  ");
@@ -162,7 +178,7 @@ public class GraphAdjMat extends Graph {
                         System.out.println("Cette arete n'a pas été ajouté ");
                 }
             }
-        }
+
     }
 
     @Override
@@ -232,9 +248,12 @@ public class GraphAdjMat extends Graph {
     @Override
     public void displayOnConsole() {
         for (int i = 1; i <= vertexNumber(); i++) {
-            System.out.print("The vertex " + adjencyMatrix[i][1].getVertexA() + " has like successors : ");
+            System.out.println("The vertex " + numerotation.vertexOf(i).toString() + " has like successors : ");
             for (int j = 1; j <= vertexNumber(); j++) {
-                System.out.print(adjencyMatrix[i][j].getVertexB());
+                if (adjencyMatrix[i][j] != null) {
+                    if (existEdge(adjencyMatrix[i][j].getVertexA(),adjencyMatrix[i][j].getVertexB()))
+                    System.out.print(adjencyMatrix[i][j].getVertexB());
+                }
             }
         }
     }
@@ -375,6 +394,7 @@ public class GraphAdjMat extends Graph {
 
     @Override
     public boolean existEdge(Vertex a, Vertex b) {
+        if (a==null || b ==null) return false;
         if (existVertex(a) && existVertex(b) && adjencyMatrix[numerotation.indexOf(a)][numerotation.indexOf(b)] != null)
             return true;
         else
@@ -421,6 +441,8 @@ public class GraphAdjMat extends Graph {
     public void setValueEdge(int i, int j, int n) {
         adjencyMatrix[i][j].setValue(n);
     }
+
+
 
 
 }
