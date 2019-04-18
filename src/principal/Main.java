@@ -18,12 +18,15 @@ public class Main {
 
         //  g.readFromKeyBoard();
 
-        g.addVertex(v1);
-        g.addVertex(v2);
+    //    g.addVertex(v1);
+      //  g.addVertex(v2);
      //   g.deleteVertex(v2);
-        g.addEgde(new Edge(v1,v2,10));
-        g.deleteEdge(v1,v2);
+      //  g.addEgde(new Edge(v1,v2,10));
+       // g.deleteEdge(v1,v2);
+
+        g.readFromFile("fichier");
         g.displayOnConsole();
+        g.writeToFile("fichierAdjMat");
         //  g.addVertex(v1);
         //  g.addVertex(v2);
        /* V = n.getAllVertex();

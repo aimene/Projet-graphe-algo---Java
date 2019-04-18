@@ -209,6 +209,11 @@ public class GraphAdjMat extends Graph {
             if (lecteur.hasNextLine()) {
                 int numberOfVertex = Integer.parseInt(lecteur.nextLine());
                 int numberOfEdge = Integer.parseInt(lecteur.nextLine());
+                adjencyMatrix =new Edge[numberOfVertex+1][numberOfVertex+1];
+
+                adjencyMatrix[0][0]= new Edge(numberOfVertex);
+                adjencyMatrix[0][1]= new Edge(numberOfEdge);
+
                 Edge vertexNumber = new Edge(0);
                 vertexNumber.setValue(numberOfEdge);
                 Edge edgeNumber = new Edge(0);
