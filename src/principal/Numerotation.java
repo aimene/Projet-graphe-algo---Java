@@ -23,7 +23,7 @@ public class Numerotation {
    }
 
     public boolean existVertex( int i){
-        return vertexHashTable.contains(vertex.get(i));
+        return vertexHashTable.contains(i);
     }
 
     public Vertex vertexOf(int i){
@@ -34,7 +34,7 @@ public class Numerotation {
     }
 
     public int indexOf(Vertex v){
-        if (vertexHashTable.contains(v))
+        if (vertexHashTable.containsKey(v))
             return vertexHashTable.get(v);
         else
             return -1;
@@ -47,7 +47,8 @@ public class Numerotation {
         if(!existVertex(v)){
             counter++;
             vertexHashTable.put( v, counter);
-            vertex.set(counter, v);
+            vertex.setSize(counter); // ce que j'ai ajoute : oumar
+            vertex.add(counter, v); // change : oumar
             return true;
         }
         return false;

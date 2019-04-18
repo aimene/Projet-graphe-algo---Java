@@ -3,6 +3,7 @@ package Algorithm;
 import principal.Edge;
 import principal.Graph;
 
+
 public class GraphAlgorithm {
 
     //Algo des distances

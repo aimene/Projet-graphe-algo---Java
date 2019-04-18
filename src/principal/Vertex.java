@@ -82,7 +82,7 @@ public class Vertex {
 
     @Override
     public String toString() {
-        return "Vertex{" +
+        return "{" +
                 "name='" + name + '\'' +
                 ", value=" + value +
                 ", position=" + position +

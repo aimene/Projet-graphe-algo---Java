@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="e9c9a48f-b894-48c0-a918-22c5b41fe834" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$1.class" afterDir="false" />
@@ -14,15 +15,22 @@
       <change beforePath="$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/principal/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/principal/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/principal/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/principal/Vertex.java" afterDir="false" />
+=======
+    <list default="true" id="6bd89cbf-8f44-40f9-b80d-bcf11c316ba6" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/principal/GraphAdjMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/principal/GraphAdjMat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/principal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/principal/Main.java" afterDir="false" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Algorithm/GraphAlgorithm.java">
@@ -32,15 +40,28 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+=======
+    <leaf>
+      <file leaf-file-name="fichier.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fichier.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/principal/Main.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="-5661">
               <caret line="42" column="37" lean-forward="true" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+=======
+            <state relative-caret-position="230">
+              <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,18 +69,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/principal/Main.java">
+      <file leaf-file-name="Numerotation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/principal/Numerotation.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="102">
               <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+=======
+            <state relative-caret-position="217">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
+              <folding>
+                <element signature="e#420#421#0" expanded="true" />
+                <element signature="e#460#461#0" expanded="true" />
+                <element signature="e#501#502#0" expanded="true" />
+                <element signature="e#551#552#0" expanded="true" />
+              </folding>
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/principal/Edge.java">
+      <file leaf-file-name="Vertex.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/principal/Vertex.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="544">
               <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
               <folding>
@@ -71,25 +104,35 @@
                 <element signature="e#2122#2123#0" expanded="true" />
                 <element signature="e#2171#2172#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="171">
+              <caret line="66" selection-start-line="66" selection-end-line="66" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/principal/Graph.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="591">
               <caret line="60" selection-start-line="60" selection-end-line="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+=======
+            <state>
+              <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/principal/GraphApsFs.java">
+      <file leaf-file-name="GraphAdjMat.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/principal/GraphAdjMat.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="4114">
               <caret line="252" selection-start-line="252" selection-end-line="252" />
               <folding>
@@ -97,14 +140,32 @@
                 <element signature="e#576#577#0" expanded="true" />
                 <element signature="e#607#608#0" expanded="true" />
                 <element signature="e#636#637#0" expanded="true" />
+=======
+            <state relative-caret-position="198">
+              <caret line="214" column="58" selection-start-line="214" selection-start-column="58" selection-end-line="214" selection-end-column="58" />
+              <folding>
+                <element signature="e#12232#12233#0" expanded="true" />
+                <element signature="e#12268#12269#0" expanded="true" />
+                <element signature="e#12965#12966#0" expanded="true" />
+                <element signature="e#13018#13019#0" expanded="true" />
+                <element signature="e#13065#13066#0" expanded="true" />
+                <element signature="e#13124#13125#0" expanded="true" />
+                <element signature="e#13270#13271#0" expanded="true" />
+                <element signature="e#13317#13318#0" expanded="true" />
+                <element signature="e#13357#13358#0" expanded="true" />
+                <element signature="e#13404#13405#0" expanded="true" />
+                <element signature="e#13471#13472#0" expanded="true" />
+                <element signature="e#13518#13519#0" expanded="true" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/principal/GraphAdjMat.java">
+      <file leaf-file-name="Graph.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/principal/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="6341">
               <caret line="385" column="42" selection-start-line="385" selection-start-column="42" selection-end-line="385" selection-end-column="42" />
               <folding>
@@ -124,13 +185,18 @@
                 <element signature="e#12864#12865#0" expanded="true" />
                 <element signature="e#12911#12912#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="123">
+              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/principal/Vertex.java">
+      <file leaf-file-name="Edge.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/principal/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="479">
               <caret line="52" column="43" lean-forward="true" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
               <folding>
@@ -139,6 +205,17 @@
                 <element signature="e#515#516#0" expanded="true" />
                 <element signature="e#922#923#0" expanded="true" />
                 <element signature="e#949#950#0" expanded="true" />
+=======
+            <state relative-caret-position="102">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
+              <folding>
+                <element signature="e#582#583#0" expanded="true" />
+                <element signature="e#612#613#0" expanded="true" />
+                <element signature="e#730#731#0" expanded="true" />
+                <element signature="e#760#761#0" expanded="true" />
+                <element signature="e#904#905#0" expanded="true" />
+                <element signature="e#1892#1898#0" expanded="true" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
               </folding>
             </state>
           </provider>
@@ -146,34 +223,25 @@
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>Ste</find>
-      <find>set</find>
-      <find>mousePRess</find>
-      <find>repaint</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/principal/GraphAdjMat.java" />
         <option value="$PROJECT_DIR$/src/principal/Graph.java" />
         <option value="$PROJECT_DIR$/src/principal/GraphApsFs.java" />
         <option value="$PROJECT_DIR$/src/principal/Main.java" />
+=======
+        <option value="$PROJECT_DIR$/.gitignore" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/Algorithm/GraphAlgorithm.java" />
+        <option value="$PROJECT_DIR$/fichier.txt" />
+        <option value="$PROJECT_DIR$/src/principal/Numerotation.java" />
         <option value="$PROJECT_DIR$/src/principal/Vertex.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/principal/Edge.java" />
         <option value="$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java" />
       </list>
@@ -184,40 +252,48 @@
     <option name="y" value="-9" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
+=======
+        <option value="$PROJECT_DIR$/src/principal/GraphAdjMat.java" />
+        <option value="$PROJECT_DIR$/src/principal/Main.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Projet-graphe-algo---Java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projet-graphe-algo---Java" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetGrapheAlgo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetGrapheAlgo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Projet-graphe-algo---Java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projet-graphe-algo---Java" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetGrapheAlgo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetGrapheAlgo" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjetGrapheAlgo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetGrapheAlgo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Projet-graphe-algo---Java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projet-graphe-algo---Java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Algorithm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Projet-graphe-algo---Java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projet-graphe-algo---Java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Graphique" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Projet-graphe-algo---Java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projet-graphe-algo---Java" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetGrapheAlgo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetGrapheAlgo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="principal" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -226,6 +302,11 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -244,37 +325,62 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="GraphiqueGraphe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Graphique.GraphiqueGraphe" />
-      <module name="ProjetGrapheAlgo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Graphique.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="principal.Main" />
       <module name="ProjetGrapheAlgo" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="principal.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.GraphiqueGraphe" />
       </list>
     </recent_temporary>
   </component>
@@ -283,17 +389,23 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e9c9a48f-b894-48c0-a918-22c5b41fe834" name="Default Changelist" comment="" />
-      <created>1555417872212</created>
+      <changelist id="6bd89cbf-8f44-40f9-b80d-bcf11c316ba6" name="Default" comment="" />
+      <created>1555594856946</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1555417872212</updated>
       <workItem from="1555417877995" duration="27744000" />
       <workItem from="1555594981314" duration="16720000" />
+=======
+      <updated>1555594856946</updated>
+      <workItem from="1555594893426" duration="12204000" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="44464000" />
   </component>
   <component name="ToolWindowManager">
@@ -353,11 +465,87 @@
       <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
     </layout-to-restore>
+=======
+    <option name="totallyTimeSpent" value="12204000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="6" />
+      <window_info anchor="bottom" id="TODO" order="13" weight="0.32847896" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32781458" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="0" weight="0.32980332" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="9" visible="true" weight="0.3178808" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.32781458" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.29801324" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Designer" order="0" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.18697956" />
+      <window_info anchor="right" id="Database" order="1" weight="0.32980332" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.24962178" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.24962178" />
+      <window_info id="UI Designer" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.38245034" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Web" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Spring" order="3" weight="0.32847896" />
+      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="right" id="Bean Validation" order="4" weight="0.32980332" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Java Enterprise" order="1" weight="0.32847896" />
+      <window_info anchor="bottom" id="Find" order="8" />
+    </layout>
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/principal/GraphAdjMat.java</url>
+          <line>184</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/principal/GraphAdjMat.java</url>
+          <line>185</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/principal/Main.java</url>
+          <line>18</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/principal/GraphAdjMat.java</url>
+          <line>243</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="29" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/principal/kruskal.java" />
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -403,11 +591,39 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/principal/GraphApsFs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="749">
+          <caret line="549" column="33" lean-forward="true" selection-start-line="549" selection-start-column="33" selection-end-line="549" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/principal/Vertex.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" lean-forward="true" selection-end-line="744" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_102/src.zip!/java/util/Hashtable.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="479">
           <caret line="52" column="43" lean-forward="true" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
           <folding>
@@ -426,10 +642,29 @@
           <caret line="60" selection-start-line="60" selection-end-line="60" />
           <folding>
             <element signature="imports" expanded="true" />
+=======
+        <state relative-caret-position="115">
+          <caret line="292" selection-start-line="292" selection-end-line="292" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#582#583#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#1892#1898#0" expanded="true" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Algorithm/GraphAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -437,11 +672,25 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/src/principal/Vertex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/principal/Edge.java">
+    <entry file="file://$PROJECT_DIR$/fichier.txt">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/Numerotation.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="544">
           <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
           <folding>
@@ -452,14 +701,49 @@
             <element signature="e#1892#1898#0" expanded="true" />
             <element signature="e#2122#2123#0" expanded="true" />
             <element signature="e#2171#2172#0" expanded="true" />
+=======
+        <state relative-caret-position="217">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="e#420#421#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java">
+    <entry file="file://$PROJECT_DIR$/src/principal/GraphAdjMat.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="214" column="58" selection-start-line="214" selection-start-column="58" selection-end-line="214" selection-end-column="58" />
+          <folding>
+            <element signature="e#12232#12233#0" expanded="true" />
+            <element signature="e#12268#12269#0" expanded="true" />
+            <element signature="e#12965#12966#0" expanded="true" />
+            <element signature="e#13018#13019#0" expanded="true" />
+            <element signature="e#13065#13066#0" expanded="true" />
+            <element signature="e#13124#13125#0" expanded="true" />
+            <element signature="e#13270#13271#0" expanded="true" />
+            <element signature="e#13317#13318#0" expanded="true" />
+            <element signature="e#13357#13358#0" expanded="true" />
+            <element signature="e#13404#13405#0" expanded="true" />
+            <element signature="e#13471#13472#0" expanded="true" />
+            <element signature="e#13518#13519#0" expanded="true" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-5661">
           <caret line="42" column="37" lean-forward="true" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+=======
+        <state relative-caret-position="230">
+          <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+>>>>>>> af6112291aa3a6f53126b41715dbf4ec23ed4687
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

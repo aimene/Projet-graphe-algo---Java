@@ -3,10 +3,13 @@ package principal;
 import javax.xml.stream.events.EntityDeclaration;
 import java.awt.*;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.stream.Stream;
 
 public class  GraphApsFs extends Graph {
     private int[] aps;
@@ -22,13 +25,20 @@ public class  GraphApsFs extends Graph {
         this.fs=fs;
         fs2aps();
     }
+    public GraphApsFs(Numerotation num,int numberoFVertex,int numberOfEdge){
+        this(num);
+        fs = new int[numberOfEdge+numberoFVertex+1];
+        aps = new int[numberOfEdge+1];
+        fs[0]=numberoFVertex+numberOfEdge;
+        aps[0]=numberoFVertex;
+    }
 
     public int vertexNumber() {
-        return fs[0];
+        return aps[0];
     }
 
     public int edgeNumber() {
-        return aps[0];
+        return fs[0]-aps[0];
     }
 
     public  void setVertexNumber(int n){ fs[0] = n;}
@@ -116,7 +126,7 @@ public class  GraphApsFs extends Graph {
         int []fp = new int [vertexNumber()+edgeNumber()+1];
         int[] ddi = new int[vertexNumber()+1];
         ddi = getDDI();
-        int[]app=new int[vertexNumber()+1];
+        int[]app = new int[vertexNumber()+1];
         app = getAPP();
         fp[0]=vertexNumber()+edgeNumber();
         int j;
@@ -137,6 +147,7 @@ public class  GraphApsFs extends Graph {
     }
 
 
+
     @Override
     public boolean existVertex(Vertex a) {
         int valeur = numerotation.indexOf(a);
@@ -152,16 +163,68 @@ public class  GraphApsFs extends Graph {
         }
         numerotation.addVertex(v);
         int i  = numerotation.indexOf(v);
+        // DEBUT
+        int[]fsTemp = new int[fs[0]+2];
+        double valueEgeTemp[] = new double[fs[0]+2];
+        int longueur = aps[0];
+        fsTemp[0]=fs[0]+1;
+        for (int j=1;j<longueur;++j){
+            fsTemp[j]=fs[j];
+            valueEgeTemp[j]=valueEdge[j];
+        }
+        fsTemp[longueur]=i;
+        valueEdge[longueur] = v.getValue();
+        for(int j=longueur;j<=fs[0];++j){
+            fsTemp[j+1]= fs[j];
+            valueEgeTemp[j+1]=valueEdge[j];
+        }
+        fs = new int [fsTemp[0]+1];
+        fs[0]=fsTemp[0];
+        valueEdge = new double[fsTemp[0]+1];
+        for(int j=1;j<=fsTemp[0];++j){
+            fs[j] = fsTemp[j];
+            valueEdge[j] = valueEgeTemp[j];
+        }
         return true;
     }
 
     @Override
-    public boolean deleteVertex(Vertex v) {// à modifier
+    public boolean deleteVertex(Vertex v) {
         if (existVertex(v)) {
             int i = numerotation.indexOf(v);
             numerotation.getAllVertex().remove(i);
-
-            return true;
+            int[] fsTemp = new  int[vertexNumber()+edgeNumber()+1];
+            fsTemp = getFS();
+            int supprCounter=0;
+            int sommet,k;
+            for (k=1;k<=vertexNumber();++k){
+                if(aps[k]==i){
+                    sommet=k;
+                }
+            }
+           for (int j=1;j<=vertexNumber()+edgeNumber();++j){
+                if(fs[j]==k){
+                    supprCounter++;
+                    fsTemp[j]=-1;
+                }
+            }
+           int m=i;
+           while(fs[m]!=0){
+               supprCounter++;
+               ++m;
+               fsTemp[m]=-1;
+           }
+           fsTemp[m]=-1;
+           supprCounter++;
+           fs = new int[fsTemp[0]-supprCounter+1];
+           fs[0]=fsTemp[0]-supprCounter;
+           for (int j = 0;j<=fsTemp[0];++j ){
+               if(fsTemp[j]!=-1){
+                   fs[j]=fsTemp[j];
+               }
+           }
+           fs2aps();
+           return true;
         }
         return false;
     }
@@ -174,22 +237,25 @@ public class  GraphApsFs extends Graph {
         int numberOfVertex = in.nextInt();
         System.out.print("Entrer le nombre d'arcs : ");
         int numberOfEdge = in.nextInt();
-        fs=new int[numberOfEdge+numberOfVertex+1];
+        fs = new int[numberOfEdge+numberOfVertex+1];
         fs[0] = numberOfVertex + numberOfEdge;
+        aps = new int[numberOfVertex+1];
+        aps[0]=numberOfVertex;
         valueEdge = new double[numberOfEdge+numberOfVertex+1];
         valueEdge[0]=numberOfVertex + numberOfEdge;
-        int k = 1;
+        int k = 0;
         int sommet;
         int value;
         for (int i = 1; i <=numberOfVertex; ++i) {
             System.out.println("Entrer les successeurs du sommet " + i);
             while (reponse.equals("o")){
+                k++;
                 System.out.println("Entrer le sommet");
                 sommet = in.nextInt();
-                fs[k++] = sommet;
+                fs[k] = sommet;
                 System.out.println("Entrer la valeur de l'arc");
                 value = in.nextInt();
-                valueEdge[k++]= value;
+                valueEdge[k]= value;
                 System.out.println("Encore un successeur du sommet " + i + "? o/n");
                 String rep = new String();
                 rep=in.nextLine();
@@ -197,31 +263,48 @@ public class  GraphApsFs extends Graph {
             }
             k++;
             fs[k] = 0;
+            valueEdge[k]=-1; // convention separateur des sommets
             reponse="o";
         }
         fs2aps();
     }
 
     public boolean readFromFile(String fileName) {
-        Scanner lecteur = null;
-        int size = Integer.parseInt(lecteur.nextLine());
-        int numberofEdge = Integer.parseInt(lecteur.nextLine());
+        int k =1;
+        int l =1;
         try {
-            int k =1;
-            lecteur = new Scanner(new FileReader(fileName + ".txt"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
+            String line = new String();
+            int size = Integer.parseInt(line = bufferedReader.readLine());
+            int numberofEdge = Integer.parseInt(line = bufferedReader.readLine());
             fs = new int[size + numberofEdge+1];
+            valueEdge = new double [size + numberofEdge+1] ;
+            int indexSucc = size + 2;
             fs[0]=size+numberofEdge;
-            while (lecteur.hasNextLine()) {
-                String ligne = lecteur.nextLine();
-                String[] ligneTableau = ligne.split(" ");
+            valueEdge[0]=size+numberofEdge;
+            aps = new int[size+1];
+            aps[0]=size;
+            for (int i=3;i<=indexSucc;++i){
+                line = bufferedReader.readLine();
+            }
+           while ((line = bufferedReader.readLine()) != null) {
+                String contain = line;
+               String[] ligneTableau = new String[line.length()];
+                ligneTableau = contain.split(" ");
                 int taille = ligneTableau.length;
-                for (int j = 0; j <taille; ++j) {
+                for (int j = 0; j<taille; j+=2) {
                     fs[k] = Integer.parseInt(ligneTableau[j]);
-                    ++k;
+                    valueEdge[k]=Double.parseDouble(ligneTableau[j+1]);
+                    k++;
+                    //System.out.print(ligneTableau[j]+"/");
                 }
                 fs[k] =  0;
+                valueEdge[k]=-1;
+                k++;
             }
-            fs2aps();
+           k++;
+           fs[k]=0;
+            bufferedReader.close();
             return true;
         } catch (Exception e) {
             System.out.println("erreur de lecture");
@@ -249,12 +332,14 @@ public class  GraphApsFs extends Graph {
     }
 
     @Override
+
     public void setValueEdge(int i, int j, int n) {
 
     }
 
     @Override
-    public Graph copyGraph() { // à revoir
+    public Graph copyGraph() {
+
         Numerotation n = new Numerotation();
         GraphApsFs graph = new GraphApsFs(n);
         for (int i=0;i<fs[0];++i){
@@ -316,7 +401,7 @@ public class  GraphApsFs extends Graph {
                 fs[i]=fsTemp[i];
                 valueEdge[i]=fsTemp[i];
             }
-            fs2aps();
+            //fs2aps();
             return true;
         }
         return false;
@@ -329,16 +414,32 @@ public class  GraphApsFs extends Graph {
 
     @Override
     public void displayOnConsole() {
-        for (int i =0;i<fs[0];i++)
+        System.out.println("Contenu de fs : file de successeurs : ");
+        for (int i =0;i<=vertexNumber()+edgeNumber();i++) {
             System.out.print(fs[i] + " ");
-        System.out.println("Affichage des sommets qui ont des successeurs ");
-        for (int i=1;i<=fs[0];++i){
-            System.out.println("Les successeurs du sommet " + i);
-            while(fs[i]!=0){
-                System.out.print(fs[i] + " ");
-            }
         }
-    }
+        System.out.println();
+        System.out.println("Affichage des sommets qui ont des successeurs : ");
+        int j=1;
+        for (int i=1;i<=vertexNumber();++i){
+            System.out.println("Les successeurs du sommet " + i + " :");
+            while(fs[j]!=0){
+                System.out.print(fs[j] + " ");
+                j++;
+            }
+            System.out.println();
+            j++;
+        }
+        System.out.println("Contenu de aps :");
+        for (int i=0;i<=vertexNumber();++i){
+            System.out.print(aps[i]+" ");
+        }
+        System.out.println();
+        System.out.println("Contenu les valeurs des arcs entre les sommets et leurs successeurs respectifs :");
+        for (int i=1;i<vertexNumber()+edgeNumber();++i){
+            System.out.print(valueEdge[i]+" ");
+        }
+     }
 
     @Override
     public boolean writeToFile(String fileName) {
@@ -346,18 +447,22 @@ public class  GraphApsFs extends Graph {
             PrintWriter writer = new PrintWriter(fileName+".txt");
             writer.println(vertexNumber());
             writer.println(edgeNumber());
+            Vector<Vertex> vertex=new Vector<Vertex>();
+            vertex = numerotation.getAllVertex();
+            for (int i = 1; i <=vertexNumber(); ++i) {
+                writer.print(vertex.get(i).getName() + " " + vertex.get(i).getValue() + " " + vertex.get(i).getPosition().x + " " + vertex.get(i).getPosition().y);
+                writer.println();
+            }
             int k = 1;
             for (int i = 1; i <vertexNumber(); ++i) {
 
                 while (fs[k]!=0) {
-                    writer.print(fs[i]);
-                    writer.print(" ");
+                    writer.print(fs[k]+" " + valueEdge[k]+ " ");
+                    writer.println();
                    k++;
                 }
-                writer.println();
                 k++;
-                writer.print((fs[k]));
-                writer.print(" ");
+                writer.print(fs[k]+" " + valueEdge[k]+ " ");
                 k++;
             }
             writer.close();
@@ -408,25 +513,46 @@ public class  GraphApsFs extends Graph {
         return adjMat;
     }
     private void fs2aps(){
-        int n = fs[0];
+        int n = vertexNumber();
         aps = new int[n+1];
         aps[0]=n;
         aps[1]=1;
         int j=2;
         for (int i = 2;i<=n;++i){
-            while(fs[j]!=0){
+           while((fs[j])!=0 && j<= fs.length){
                 ++j;
-            }
+           }
             j++;
             aps[i]=j;
         }
     }
     public static void main(String[] args) {
         Numerotation n = new Numerotation();
+        Vertex v1 =new Vertex("un",2.5,new Point(100,200));
+        Vertex v2 = new Vertex("Deux",3.1,new Point(25,50));
+        n.addVertex(v1);
+        n.addVertex(v2);
+        Vector<Vertex> V = new Vector<Vertex>();
+        System.out.println(V.size());
         GraphApsFs g = new GraphApsFs(n);
+
         g.readFromKeyBoard();
+        g.fs2aps();
         g.displayOnConsole();
-        //g.writeToFile("fichier");
+        g.addVertex(v1);
+        g.addVertex(v2);
+        V = n.getAllVertex();
+        System.out.println();
+        System.out.println(V.size());
+        for (int i=1;i<V.size();++i){
+            System.out.println(n.indexOf(V.get(i)));
+        }
+        g.writeToFile("fichier");
+        boolean t;
+        t = g.readFromFile("fichier.txt");
+        System.out.println(t);
+        g.fs2aps();
+        g.displayOnConsole();
     }
 
 
