@@ -263,7 +263,7 @@ public class GraphAdjMat extends Graph {
             for (int j = 1; j <= vertexNumber(); j++) {
                 if (adjencyMatrix[i][j] != null) {
                     if (existEdge(adjencyMatrix[i][j].getVertexA(),adjencyMatrix[i][j].getVertexB()))
-                    System.out.print(adjencyMatrix[i][j].getVertexB());
+                    System.out.println(adjencyMatrix[i][j].getVertexB());
                 }
             }
         }

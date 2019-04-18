@@ -20,8 +20,9 @@ public class Main {
 
         g.addVertex(v1);
         g.addVertex(v2);
-        g.deleteVertex(v2);
-
+     //   g.deleteVertex(v2);
+        g.addEgde(new Edge(v1,v2,10));
+        g.deleteEdge(v1,v2);
         g.displayOnConsole();
         //  g.addVertex(v1);
         //  g.addVertex(v2);

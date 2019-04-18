@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bd89cbf-8f44-40f9-b80d-bcf11c316ba6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/principal/GraphAdjMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/principal/GraphAdjMat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/principal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/principal/Main.java" afterDir="false" />
     </list>
@@ -25,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/principal/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="146">
+              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -40,7 +39,7 @@
       <file leaf-file-name="Numerotation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/principal/Numerotation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-381">
+            <state relative-caret-position="171">
               <caret line="36" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="e#420#421#0" expanded="true" />
@@ -70,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphAdjMat.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GraphAdjMat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/principal/GraphAdjMat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="89" column="59" selection-start-line="89" selection-start-column="59" selection-end-line="89" selection-end-column="59" />
+            <state relative-caret-position="59">
+              <caret line="260" column="51" lean-forward="true" selection-start-line="260" selection-start-column="51" selection-end-line="260" selection-end-column="51" />
               <folding>
                 <element signature="e#12232#12233#0" expanded="true" />
                 <element signature="e#12268#12269#0" expanded="true" />
@@ -106,11 +105,13 @@
         <entry file="file://$PROJECT_DIR$/src/principal/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
+                <element signature="e#582#583#0" expanded="true" />
                 <element signature="e#612#613#0" expanded="true" />
                 <element signature="e#730#731#0" expanded="true" />
                 <element signature="e#760#761#0" expanded="true" />
+                <element signature="e#904#905#0" expanded="true" />
                 <element signature="e#1892#1898#0" expanded="true" />
               </folding>
             </state>
@@ -130,8 +131,8 @@
         <option value="$PROJECT_DIR$/fichier.txt" />
         <option value="$PROJECT_DIR$/src/principal/Numerotation.java" />
         <option value="$PROJECT_DIR$/src/principal/Vertex.java" />
-        <option value="$PROJECT_DIR$/src/principal/Main.java" />
         <option value="$PROJECT_DIR$/src/principal/GraphAdjMat.java" />
+        <option value="$PROJECT_DIR$/src/principal/Main.java" />
       </list>
     </option>
   </component>
@@ -259,12 +260,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555594856946</updated>
-      <workItem from="1555594893426" duration="10762000" />
+      <workItem from="1555594893426" duration="11204000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10762000" />
+    <option name="totallyTimeSpent" value="11204000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -359,7 +360,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/principal/Main.java</url>
-          <line>24</line>
+          <line>25</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
@@ -371,12 +372,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/principal/Main.java</url>
-          <line>20</line>
+          <line>23</line>
           <properties />
-          <option name="timeStamp" value="21" />
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="24" />
+      <option name="time" value="25" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -422,29 +423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/principal/Edge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#612#613#0" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#760#761#0" expanded="true" />
-            <element signature="e#1892#1898#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/principal/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/principal/Vertex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="806">
@@ -454,7 +432,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/principal/Numerotation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-381">
+        <state relative-caret-position="171">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="e#420#421#0" expanded="true" />
@@ -465,10 +443,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#582#583#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#1892#1898#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/principal/GraphAdjMat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="89" column="59" selection-start-line="89" selection-start-column="59" selection-end-line="89" selection-end-column="59" />
+        <state relative-caret-position="59">
+          <caret line="260" column="51" lean-forward="true" selection-start-line="260" selection-start-column="51" selection-end-line="260" selection-end-column="51" />
           <folding>
             <element signature="e#12232#12233#0" expanded="true" />
             <element signature="e#12268#12269#0" expanded="true" />
@@ -482,6 +475,16 @@
             <element signature="e#13404#13405#0" expanded="true" />
             <element signature="e#13471#13472#0" expanded="true" />
             <element signature="e#13518#13519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
