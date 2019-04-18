@@ -49,6 +49,11 @@ public class Vertex {
     }
 
 
+    public void deleteVertex(){
+        AllVertexes.remove(this.name,this);
+    }
+
+
 
     public Point getPosition() {
         return position;
@@ -99,6 +104,7 @@ public class Vertex {
     public static Iterator<Vertex> iterator() {
         return AllVertexes.values().iterator();
     }
+
 
 
 }

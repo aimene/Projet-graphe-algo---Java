@@ -12,6 +12,7 @@ public class Edge {
         this.vertexA = vertexA;
         this.vertexB = vertexB;
         this.value = value;
+        AllEdges.add(this);
     }
     public Edge( double value) {
         this(null,null,value);
@@ -19,7 +20,6 @@ public class Edge {
 
     public Edge(Vertex vertexA, Vertex vertexB){
         this(vertexA,vertexB, 0.0);
-        AllEdges.add(this);
     }
 
     public Edge(){
@@ -53,6 +53,10 @@ public class Edge {
     public void lessValue(){ this.value -= 1; }
 
     public void moreValue(){ this.value += 1; }
+
+    public void deleteEdge(){
+        AllEdges.remove(this);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -90,6 +94,10 @@ public class Edge {
 
     public static Iterator<Edge> iterator() {
         return AllEdges.iterator();
+    }
+
+    public static Edge getEdge(){
+        return AllEdges.iterator().next();
     }
 
 
