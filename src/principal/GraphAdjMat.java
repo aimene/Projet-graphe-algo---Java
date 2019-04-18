@@ -15,6 +15,7 @@ public class GraphAdjMat extends Graph {
         super(num);
         adjencyMatrix= new Edge[1][1];
         adjencyMatrix[0][0]= new Edge(0);
+        //adjencyMatrix[0][1]= new Edge(0);
     }
 
     public GraphAdjMat(Numerotation num, Edge[][] adjencyMatrix) {
@@ -31,11 +32,11 @@ public class GraphAdjMat extends Graph {
     @Override
     public boolean addVertex(Vertex v) {
         if (!numerotation.existVertex(v)) {
+            int nbVertex =vertexNumber();
+            int nbEdge = edgeNumber();
             Edge[][] adjencyMatrixTemp = new Edge[vertexNumber() + 2][vertexNumber() + 2];
             if (vertexNumber()==0){
             }else {
-
-
 
                 for (int i = 1; i <= vertexNumber(); i++) {
                     for (int j = 1; j <= vertexNumber(); j++) {
@@ -45,10 +46,17 @@ public class GraphAdjMat extends Graph {
 
                 adjencyMatrixTemp[0][1]=adjencyMatrix[0][1];
             }
+           adjencyMatrix = new Edge[vertexNumber() + 2][vertexNumber() + 2];
+            adjencyMatrix[0][0]=new Edge(nbVertex +1);
+            adjencyMatrix[0][1]=new Edge(nbEdge );
 
-            adjencyMatrix[0][0].setValue(vertexNumber() +1);
-            adjencyMatrixTemp[0][0]=adjencyMatrix[0][0];
-            adjencyMatrix = adjencyMatrixTemp;
+
+            for (int i = 1; i <= vertexNumber(); i++) {
+                for (int j = 1; j <= vertexNumber(); j++) {
+                    adjencyMatrix[i][j] = adjencyMatrixTemp[i][j];
+                }
+            }
+
             adjencyMatrix[0][0].setValue(vertexNumber() );
             numerotation.addVertex(v);
             return true;
@@ -61,22 +69,25 @@ public class GraphAdjMat extends Graph {
     @Override
     public boolean deleteVertex(Vertex v) {
         if (numerotation.existVertex(v)) {
-            for (int i = 0; i <= vertexNumber(); i++) {
+            for (int i = 1; i <= vertexNumber(); i++) {
                 adjencyMatrix[numerotation.indexOf(v)][i] = null;
                 adjencyMatrix[i][numerotation.indexOf(v)] = null;
             }
             int nb = 0;
-            for (int i = 0; i <= vertexNumber(); i++) {
-                if (existEdge(adjencyMatrix[numerotation.indexOf(v)][i].getVertexA(), adjencyMatrix[numerotation.indexOf(v)][i].getVertexB())) {
+            for (int i = 1; i <= vertexNumber(); i++) {
+
+                if (adjencyMatrix[numerotation.indexOf(v)][i]!=null && existEdge(adjencyMatrix[numerotation.indexOf(v)][i].getVertexA(), adjencyMatrix[numerotation.indexOf(v)][i].getVertexB())) {
                     nb++;
                 }
-                if (existEdge(adjencyMatrix[i][numerotation.indexOf(v)].getVertexA(), adjencyMatrix[i][numerotation.indexOf(v)].getVertexB())) {
+                if (adjencyMatrix[i][numerotation.indexOf(v)]!= null && existEdge(adjencyMatrix[i][numerotation.indexOf(v)].getVertexA(), adjencyMatrix[i][numerotation.indexOf(v)].getVertexB())) {
                     nb++;
                 }
             }
             // update numver of edge
-            adjencyMatrix[0][1].setValue(edgeNumber() - nb);
+            if(vertexNumber()<1)
+               adjencyMatrix[0][1].setValue(edgeNumber() - nb);
 
+            adjencyMatrix[0][0].setValue(vertexNumber() - 1);
             numerotation.deleteVertex(v);
             return true;
         } else {
@@ -426,7 +437,10 @@ public class GraphAdjMat extends Graph {
 
     @Override
     public int edgeNumber() {
-        return (int) adjencyMatrix[0][1].getValue();
+        if(vertexNumber()<1)
+            return 0;
+        else
+            return (int) adjencyMatrix[0][1].getValue();
     }
 
     public void setVertexNumber(int n) {
