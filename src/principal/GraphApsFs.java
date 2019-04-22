@@ -512,7 +512,7 @@ public class  GraphApsFs extends Graph {
 
         return adjMat;
     }
-    private void fs2aps(){
+    public void fs2aps(){
         int n = vertexNumber();
         aps = new int[n+1];
         aps[0]=n;

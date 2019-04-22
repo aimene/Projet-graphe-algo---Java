@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.Vector;
 
 public class Main {
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         Numerotation n = new Numerotation();
         Vertex v1 = new Vertex("un", 2.5, new Point(100, 200));
         Vertex v2 = new Vertex("Deux", 3.1, new Point(25, 50));
@@ -43,8 +43,10 @@ public class Main {
         System.out.println(t);
         g.displayOnConsole();
     }*/
-        //  public static void main(String[] args){
-        //     new GraphiqueGraphe();
-        //  }
+
+    public static void main(String[] args){
+        new GraphiqueGraphe();
     }
-}
+
+    }
+

@@ -30,7 +30,7 @@ public class GraphAlgorithm {
             for(int i = tete+1; i<= queue;i++){
 
                 int suiv = aps[fileAttente[i]];
-                while( aps[suiv] != 0){
+                while( fs[suiv] != 0){
                     if(distance[fs[suiv]] == -1){
 
                         distance[fs[suiv]] = k;
@@ -441,7 +441,7 @@ public class GraphAlgorithm {
                           fpc[kc] = j;
 
                      }else{
-                         //lg = lc[i]
+                         lg = lc[i];
                          kc++;
                          fpc[kc] = j;
 

@@ -80,13 +80,9 @@ public class Vertex {
         return Objects.hash(name, value,  position);
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                ", position=" + position +
-                '}';
+
+    public String toString(){
+        return "\"" + getName() + "\" " + getPosition().x + " " + getPosition().y+ " " + getValue();
     }
 
     //Partie utile pour la classe GraphiqueGraphe

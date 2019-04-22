@@ -71,7 +71,7 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
         JMenuItem item = new JMenuItem("Ouvrir...");
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-              //  restauration(); // load
+                load();
             }
         });
         menu.add(item);
@@ -79,7 +79,7 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
         item = new JMenuItem("Enregistrer...");
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                save(); // Save()
+                save();
             }
         });
         menu.add(item);
@@ -104,7 +104,7 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 state = VERTEX_LABELING;
-                refreshStateBar(); //refreshStateBar()
+                refreshStateBar();
             }
         });
         menu.add(item);
@@ -122,6 +122,15 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 state = START_EDGES_CREATION;
+                refreshStateBar();
+            }
+        });
+        menu.add(item);
+
+        item = new JMenuItem("Modifier poids arrête");
+        item.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                state = ATTRIBUTE_VALUE_TO_EDGES;
                 refreshStateBar();
             }
         });
@@ -258,6 +267,9 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
             case NEXT_EDGES_CREATION:
                 stateBar.setText("Création arête : désigner le second sommet");
                 break;
+            case ATTRIBUTE_VALUE_TO_EDGES:
+                stateBar.setText("Modifier poids arrête: cliquer sur une arrête pour modifier son poids");
+                break;
             case DELETE_VERTEX:
                 stateBar.setText("Suppression d'un sommet: cliquer sur un sommet pour le supprimer");
                 break;
@@ -338,15 +350,15 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
                 return;
 
             case ATTRIBUTE_VALUE_TO_EDGES:
-              /*  edge = Edge.getEdge(vertexSelected,vertex);
+                edge = neighborEdge(e.getX(),e.getY());
                 if (edge == null)
                     return;
-                Integer texte = JOptionPane.showInputDialog(this, "Valeur de l'arrête:",
-                        "Définition d'une étiquette", JOptionPane.QUESTION_MESSAGE);
-                if (texte != null)
-                    sommet.setName(texte);
+                String editValue = JOptionPane.showInputDialog(this, "Modifier la valeur de l'arrête:",
+                        "Valeur de l'arrête ", JOptionPane.QUESTION_MESSAGE);
+                double valueEdit = Double.parseDouble(editValue);
+                edge.setValue(valueEdit);
                 repaint();
-                return; */
+                return;
             case  DELETE_VERTEX:
                 vertex = neighborVertex(e.getX(), e.getY());
                 if (vertex == null)
@@ -471,6 +483,44 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
         return (int) analyseurLexical.nval;
     }
 
+    void load() {
+        JFileChooser dial = new JFileChooser();
+        int result = dial.showOpenDialog(this);
+        if (result != JFileChooser.APPROVE_OPTION)
+            return;
+        try {
+            analyseurLexical = new StreamTokenizer(new FileReader(dial
+                    .getSelectedFile()));
+            int nbr = prochainEntier();
+            for (int i = 0; i < nbr; i++) {
+                String etik = prochainMot();
+                int x = prochainEntier();
+                int y = prochainEntier();
+                int z = prochainEntier();
+                Point p = new Point(x,y);
+                new Vertex(etik,z,p);
+            }
+
+            nbr = prochainEntier();
+            for (int i = 0; i < nbr; i++) {
+                String etik1 = prochainMot();
+                String etik2 = prochainMot();
+                int k = prochainEntier();
+                Vertex s1 = Vertex.trouverSommet(etik1);
+                if (s1 == null)
+                    throw new IOException(etik1 + " sommet inexistant");
+                Vertex s2 = Vertex.trouverSommet(etik2);
+                if (s2 == null)
+                    throw new IOException(etik2 + " sommet inexistant");
+
+                new Edge(s1, s2,k);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        repaint();
+    }
 
 
 

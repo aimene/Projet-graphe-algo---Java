@@ -74,13 +74,9 @@ public class Edge {
         return Objects.hash(vertexA, vertexB, value);
     }
 
-    @Override
-    public String toString() {
-        return "Edge{" +
-                "   vertexA = " + vertexA +
-                " , vertexB = " + vertexB +
-                " , value = " + value +
-                '}';
+    public String toString(){
+        return "\"" + vertexA.getName() + "\" \"" + vertexB.getName()
+                + "\"" + " " +  getValue() ;
     }
 
     /*
