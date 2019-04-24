@@ -1,5 +1,6 @@
 package Graphique;
 
+import Algorithm.GraphAlgorithm;
 import com.sun.deploy.panel.JavaPanel;
 import principal.Edge;
 import principal.Vertex;
@@ -23,6 +24,13 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
     static final int ATTRIBUTE_VALUE_TO_EDGES = 7;
     static final int DELETE_VERTEX = 8 ;
     static final int DELETE_EDGES = 9 ;
+    static final int ALGO_DISTANCE = 10;
+    static final int ALGO_RANGS = 11;
+    static final int ALGO_DIJKSTRA = 12;
+    static final int ALGO_KRUSKAL = 13;
+    static final int ALGO_ORDONANCEMENT = 14;
+    static final int ALGO_PRUFER = 15;
+    static final int ALGO_TARJAN = 16;
 
     static final int VERY_CLOSE = 10;
 
@@ -71,7 +79,7 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
         JMenuItem item = new JMenuItem("Ouvrir...");
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                load();
+               // load();
             }
         });
         menu.add(item);
@@ -161,7 +169,7 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
         item = new JMenuItem("Algorithme des distances ");
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-               // state = START_EDGES_CREATION;
+                state = ALGO_DISTANCE;
                 refreshStateBar();
             }
         });
@@ -375,6 +383,10 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
                 repaint();
                 return;
 
+            case ALGO_DISTANCE:
+                GraphAlgorithm g = new GraphAlgorithm();
+
+
         }
 
     }
@@ -452,14 +464,28 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
             PrintStream sortie = new PrintStream(dial.getSelectedFile());
 
             sortie.println(Vertex.nombreSommets());
-            Iterator iterS = Vertex.iterator();
-            while (iterS.hasNext())
-                sortie.println(iterS.next());
-
+            Map<Integer, Vertex> iterS = Vertex.getAllVertexes();
+            Map< Vertex,Integer> iterSV = Vertex.getAllVertexesV();
             sortie.println(Edge.nombreAretes());
-            Iterator iterA = Edge.iterator();
-            while (iterA.hasNext())
-                sortie.println(iterA.next());
+            for (int i = 0 ; i<iterS.size(); i++)
+                sortie.println(iterS.get(i).getName()+" "+iterS.get(i).getValue()+" "+iterS.get(i).getPosition().x+" "+ iterS.get(i).getPosition().y);
+
+Edge aa ;
+            Collection<Edge> iterA = Edge.getEdge();
+            for (int i = 0; i < iterS.size(); i++) {
+                Iterator<Edge> ee = iterA.iterator();
+                boolean b = true ;
+                for (int j = 1; j <= iterA.size(); j++) {
+                    aa =ee.next();
+                    if (iterS.get(i)==aa.getVertexA()){
+                        sortie.print(iterSV.get(aa.getVertexB())+" "+aa.getValue()+" ");
+                        b=false;
+                    }
+                }
+                if(!b)
+                sortie.println("");
+            }
+
             sortie.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -482,7 +508,7 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
             throw new IOException("Erreur de syntaxe");
         return (int) analyseurLexical.nval;
     }
-
+/*
     void load() {
         JFileChooser dial = new JFileChooser();
         int result = dial.showOpenDialog(this);
@@ -522,7 +548,7 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
         repaint();
     }
 
-
+*/
 
 
 }

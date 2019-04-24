@@ -41,9 +41,9 @@ public class  GraphApsFs extends Graph {
         return fs[0]-aps[0];
     }
 
-    public  void setVertexNumber(int n){ fs[0] = n;}
+    public  void setVertexNumber(int n){ this.aps[0] = n; }
 
-    public  void setEdgeNumber(int n){ aps[0] = n ;}
+    public  void setEdgeNumber(int n){ fs[0] += n ;}
 
 
     @Override
@@ -286,6 +286,13 @@ public class  GraphApsFs extends Graph {
             aps[0]=size;
             for (int i=3;i<=indexSucc;++i){
                 line = bufferedReader.readLine();
+                String[] ligneTableau = line.split(" ");
+                String name = ligneTableau[0];
+                double value = Double.parseDouble(ligneTableau[1]);
+                int x = Integer.parseInt(ligneTableau[2]);
+                int y = Integer.parseInt(ligneTableau[3]);
+                Point position = new Point(x, y);
+                numerotation.addVertex(new Vertex(name, value, position));
             }
            while ((line = bufferedReader.readLine()) != null) {
                 String contain = line;
@@ -296,7 +303,6 @@ public class  GraphApsFs extends Graph {
                     fs[k] = Integer.parseInt(ligneTableau[j]);
                     valueEdge[k]=Double.parseDouble(ligneTableau[j+1]);
                     k++;
-                    //System.out.print(ligneTableau[j]+"/");
                 }
                 fs[k] =  0;
                 valueEdge[k]=-1;
@@ -304,7 +310,9 @@ public class  GraphApsFs extends Graph {
             }
            k++;
            fs[k]=0;
+            fs2aps();
             bufferedReader.close();
+
             return true;
         } catch (Exception e) {
             System.out.println("erreur de lecture");
@@ -342,7 +350,7 @@ public class  GraphApsFs extends Graph {
 
         Numerotation n = new Numerotation();
         GraphApsFs graph = new GraphApsFs(n);
-        for (int i=0;i<fs[0];++i){
+        for (int i=0;i< fs[0];++i){
             graph.fs[i]= fs[i];
             graph.valueEdge[i]=valueEdge[i];
         }
@@ -490,7 +498,11 @@ public class  GraphApsFs extends Graph {
     @Override
     public Edge[][] getAdjMat() {
         Edge n = new Edge(vertexNumber());
+        n.setVertexA(new Vertex());
+        n.setVertexB(new Vertex());
         Edge m = new Edge(edgeNumber());
+        m.setVertexA(new Vertex());
+        m.setVertexB(new Vertex());
         Edge adjMat[][] = new Edge[vertexNumber() + 1][vertexNumber() + 1];
         adjMat[0][0]=n;
         adjMat[0][1]=m;
@@ -536,18 +548,18 @@ public class  GraphApsFs extends Graph {
         System.out.println(V.size());
         GraphApsFs g = new GraphApsFs(n);
 
-        g.readFromKeyBoard();
-        g.fs2aps();
-        g.displayOnConsole();
-        g.addVertex(v1);
-        g.addVertex(v2);
-        V = n.getAllVertex();
-        System.out.println();
-        System.out.println(V.size());
-        for (int i=1;i<V.size();++i){
-            System.out.println(n.indexOf(V.get(i)));
-        }
-        g.writeToFile("fichier");
+        //g.readFromKeyBoard();
+        //g.fs2aps();
+        //g.displayOnConsole();
+        //g.addVertex(v1);
+        //g.addVertex(v2);
+       // V = n.getAllVertex();
+        //System.out.println();
+        //System.out.println(V.size());
+        //for (int i=1;i<V.size();++i){
+           // System.out.println(n.indexOf(V.get(i)));
+        //}
+        //g.writeToFile("fichier");
         boolean t;
         t = g.readFromFile("fichier.txt");
         System.out.println(t);

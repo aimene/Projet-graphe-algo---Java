@@ -92,8 +92,8 @@ public class Edge {
         return AllEdges.iterator();
     }
 
-    public static Edge getEdge(){
-        return AllEdges.iterator().next();
+    public static Collection<Edge> getEdge(){
+        return AllEdges;
     }
 
 

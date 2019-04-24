@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9c9a48f-b894-48c0-a918-22c5b41fe834" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/fichierKruskal.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Algorithm/GraphAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Algorithm/GraphAlgorithm.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Application.class" afterDir="false" />
@@ -12,20 +13,22 @@
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$13.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$14.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/Graphique/GraphiqueGraphe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/principal/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/principal/Edge.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/principal/GraphApsFs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/principal/GraphApsFs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/principal/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/principal/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/principal/Vertex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetGrapheAlgo/principal/Vertex.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Algorithm/GraphAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Algorithm/GraphAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/principal/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/principal/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/principal/GraphApsFs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/principal/GraphApsFs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/principal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/principal/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/principal/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/principal/Vertex.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -35,13 +38,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Projet_graphe_algo___Java$Application.ic" NAME="Application Coverage Results" MODIFIED="1556115950227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Algorithm/GraphAlgorithm.java">
+        <entry file="file://$PROJECT_DIR$/src/principal/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="41">
-              <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+            <state relative-caret-position="305">
+              <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,71 +58,60 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="655">
-              <caret line="509" column="31" lean-forward="true" selection-start-line="509" selection-start-column="31" selection-end-line="509" selection-end-column="31" />
+            <state relative-caret-position="-654">
+              <caret line="484" column="22" lean-forward="true" selection-start-line="484" selection-start-column="22" selection-end-line="484" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4621#4622#0" expanded="true" />
-                <element signature="e#4660#4661#0" expanded="true" />
-                <element signature="e#4865#4866#0" expanded="true" />
-                <element signature="e#4905#4906#0" expanded="true" />
+                <element signature="e#5174#5175#0" expanded="true" />
+                <element signature="e#5212#5213#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/javax/swing/AbstractButton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="2347" selection-start-line="2347" selection-end-line="2347" />
+              <folding>
+                <element signature="e#83485#83486#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/principal/Edge.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="94" column="34" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
+              <folding>
+                <element signature="e#876#877#0" expanded="true" />
+                <element signature="e#904#905#0" expanded="true" />
+                <element signature="e#1886#1892#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Application.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="81" column="44" selection-start-line="81" selection-start-column="44" selection-end-line="81" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/principal/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="16" column="8" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1336#1337#0" expanded="true" />
-                <element signature="e#1373#1374#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/principal/Graph.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-133">
-              <caret line="36" column="40" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/principal/GraphApsFs.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="514" column="19" selection-start-line="514" selection-start-column="16" selection-end-line="514" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/principal/GraphAdjMat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1337">
-              <caret line="290" column="83" lean-forward="true" selection-start-line="290" selection-start-column="83" selection-end-line="290" selection-end-column="83" />
+            <state relative-caret-position="-3111">
+              <caret line="44" column="17" lean-forward="true" selection-start-line="39" selection-end-line="44" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="424">
+              <caret line="125" selection-start-line="125" selection-end-line="125" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,21 +122,46 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/principal/Vertex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="81" selection-start-line="81" selection-end-line="81" />
+            <state relative-caret-position="458">
+              <caret line="111" column="30" selection-start-line="111" selection-start-column="30" selection-end-line="111" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#467#468#0" expanded="true" />
                 <element signature="e#515#516#0" expanded="true" />
-                <element signature="e#922#923#0" expanded="true" />
-                <element signature="e#949#950#0" expanded="true" />
-                <element signature="e#2138#2139#0" expanded="true" />
-                <element signature="e#2179#2180#0" expanded="true" />
-                <element signature="e#2239#2240#0" expanded="true" />
-                <element signature="e#2288#2289#0" expanded="true" />
-                <element signature="e#2337#2338#0" expanded="true" />
-                <element signature="e#2391#2392#0" expanded="true" />
+                <element signature="e#1876#1893#0" expanded="true" />
+                <element signature="e#2003#2020#0" expanded="true" />
+                <element signature="e#2227#2228#0" expanded="true" />
+                <element signature="e#2281#2282#0" expanded="true" />
+                <element signature="e#2490#2491#0" expanded="true" />
+                <element signature="e#2524#2525#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/principal/GraphApsFs.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="326" selection-start-line="326" selection-end-line="326" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fichier.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fichierKruskal.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -160,6 +180,7 @@
       <find>valueEDge</find>
       <find>fs2aps</find>
       <find>fs2</find>
+      <find>GETaD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,16 +191,18 @@
       <list>
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/principal/Main.java" />
-        <option value="$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java" />
-        <option value="$PROJECT_DIR$/src/principal/Edge.java" />
-        <option value="$PROJECT_DIR$/src/principal/Vertex.java" />
+        <option value="$PROJECT_DIR$/src/principal/Numerotation.java" />
         <option value="$PROJECT_DIR$/src/principal/GraphApsFs.java" />
         <option value="$PROJECT_DIR$/src/Algorithm/GraphAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/Application.java" />
+        <option value="$PROJECT_DIR$/fichierKruskal.txt" />
+        <option value="$PROJECT_DIR$/src/principal/Edge.java" />
+        <option value="$PROJECT_DIR$/src/principal/Vertex.java" />
+        <option value="$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
@@ -227,6 +250,10 @@
       <pane id="PackagesPane" />
     </panes>
   </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -239,10 +266,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Application" />
       <module name="ProjetGrapheAlgo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphApsFs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="principal.GraphApsFs" />
+      <module name="ProjetGrapheAlgo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="principal.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -262,8 +302,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Application" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Application" />
+        <item itemvalue="Application.GraphApsFs" />
       </list>
     </recent_temporary>
   </component>
@@ -278,48 +319,21 @@
       <option name="presentableId" value="Default" />
       <updated>1555417872212</updated>
       <workItem from="1555417877995" duration="27744000" />
-      <workItem from="1555594981314" duration="31462000" />
+      <workItem from="1555594981314" duration="51726000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59206000" />
+    <option name="totallyTimeSpent" value="79470000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="781" height="830" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="UI Designer" order="0" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="3" weight="0.26912752" />
-      <window_info id="Structure" order="4" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32577905" />
-      <window_info anchor="bottom" id="Version Control" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="2" />
-      <window_info anchor="bottom" id="Database Changes" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="Find" order="7" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.28510028" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="right" id="Palette&#9;" order="0" />
-      <window_info anchor="right" id="Maven" order="1" />
-      <window_info anchor="right" id="Database" order="2" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="UI Designer" order="0" />
-      <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.26912752" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.1624161" />
       <window_info id="Structure" order="4" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32577905" />
       <window_info anchor="bottom" id="Version Control" order="1" />
@@ -330,18 +344,77 @@
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.3286119" />
       <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.28186968" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="right" id="Palette&#9;" order="0" />
-      <window_info anchor="right" id="Maven" order="1" />
-      <window_info anchor="right" id="Database" order="2" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
-    </layout-to-restore>
+      <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.20872483" />
+      <window_info anchor="right" id="Palette&#9;" order="1" />
+      <window_info anchor="right" id="Maven" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
+    </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Application.java</url>
+          <line>84</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/principal/GraphApsFs.java</url>
+          <line>516</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/principal/GraphApsFs.java</url>
+          <line>514</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/principal/GraphApsFs.java</url>
+          <line>312</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Application.java</url>
+          <line>128</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Application.java</url>
+          <line>125</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/principal/Numerotation.java</url>
+          <line>35</line>
+          <properties class="principal.Numerotation" method="indexOf">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java</url>
+          <line>457</line>
+          <properties class="Graphique.GraphiqueGraphe" method="save">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/principal/kruskal.java" />
@@ -353,81 +426,9 @@
     <entry file="file://$PROJECT_DIR$/ProjetGrapheAlgo.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/fichier.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/principal/Numerotation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/principal/GraphAdjMat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1337">
-          <caret line="290" column="83" lean-forward="true" selection-start-line="290" selection-start-column="83" selection-end-line="290" selection-end-column="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/principal/Vertex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#467#468#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#922#923#0" expanded="true" />
-            <element signature="e#949#950#0" expanded="true" />
-            <element signature="e#2138#2139#0" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2239#2240#0" expanded="true" />
-            <element signature="e#2288#2289#0" expanded="true" />
-            <element signature="e#2337#2338#0" expanded="true" />
-            <element signature="e#2391#2392#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/principal/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="8" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1336#1337#0" expanded="true" />
-            <element signature="e#1373#1374#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/principal/Edge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-          <folding>
-            <element signature="e#876#877#0" expanded="true" />
-            <element signature="e#904#905#0" expanded="true" />
-            <element signature="e#1113#1114#0" expanded="true" />
-            <element signature="e#1138#1139#0" expanded="true" />
-            <element signature="e#1892#1898#0" expanded="true" />
-            <element signature="e#2122#2123#0" expanded="true" />
-            <element signature="e#2171#2172#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/principal/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-133">
+        <state relative-caret-position="612">
           <caret line="36" column="40" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -435,41 +436,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/principal/GraphApsFs.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Hashtable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="514" column="19" selection-start-line="514" selection-start-column="16" selection-end-line="514" selection-end-column="19" />
+        <state relative-caret-position="152">
+          <caret line="335" selection-start-line="335" selection-end-line="335" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Vector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
-          <caret line="509" column="31" lean-forward="true" selection-start-line="509" selection-start-column="31" selection-end-line="509" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4621#4622#0" expanded="true" />
-            <element signature="e#4660#4661#0" expanded="true" />
-            <element signature="e#4865#4866#0" expanded="true" />
-            <element signature="e#4905#4906#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="159">
+          <caret line="750" selection-start-line="750" selection-end-line="750" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Algorithm/GraphAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        <state relative-caret-position="183">
+          <caret line="370" selection-start-line="370" selection-end-line="370" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/Numerotation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/GraphApsFs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="326" selection-start-line="326" selection-end-line="326" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fichier.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fichierKruskal.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="94" column="34" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
+          <folding>
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#1886#1892#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/Vertex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="111" column="30" selection-start-line="111" selection-start-column="30" selection-end-line="111" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#467#468#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#1876#1893#0" expanded="true" />
+            <element signature="e#2003#2020#0" expanded="true" />
+            <element signature="e#2227#2228#0" expanded="true" />
+            <element signature="e#2281#2282#0" expanded="true" />
+            <element signature="e#2490#2491#0" expanded="true" />
+            <element signature="e#2524#2525#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="81" column="44" selection-start-line="81" selection-start-column="44" selection-end-line="81" selection-end-column="44" />
+        <state relative-caret-position="424">
+          <caret line="125" selection-start-line="125" selection-end-line="125" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/javax/swing/AbstractButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="2347" selection-start-line="2347" selection-end-line="2347" />
+          <folding>
+            <element signature="e#83485#83486#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Graphique/GraphiqueGraphe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-654">
+          <caret line="484" column="22" lean-forward="true" selection-start-line="484" selection-start-column="22" selection-end-line="484" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5174#5175#0" expanded="true" />
+            <element signature="e#5212#5213#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/principal/GraphAdjMat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3111">
+          <caret line="44" column="17" lean-forward="true" selection-start-line="39" selection-end-line="44" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

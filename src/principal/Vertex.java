@@ -19,7 +19,9 @@ public class Vertex {
         this.name = name;
         this.value = value;
         this.position = position;
-        AllVertexes.put(name,this);
+        AllVertexes.put(counter,this);
+        AllVertexesV.put(this,counter);
+        counter++;
     }
 
     public Vertex() {
@@ -87,19 +89,30 @@ public class Vertex {
 
     //Partie utile pour la classe GraphiqueGraphe
 
-    private static Map<String, Vertex> AllVertexes = new HashMap<String, Vertex>();
+    private static Map<Integer, Vertex> AllVertexes = new HashMap<Integer, Vertex>();
+    private static Map<Vertex,Integer > AllVertexesV = new HashMap< Vertex,Integer>();
 
+    private static int counter =0;
     public static int nombreSommets() {
         return AllVertexes.size();
     }
 
-    public static Vertex trouverSommet(String etiquette) {
-        return AllVertexes.get(etiquette);
+    public static Vertex trouverSommet(int i) {
+        return AllVertexes.get(i);
     }
 
     public static Iterator<Vertex> iterator() {
         return AllVertexes.values().iterator();
     }
+
+    public static Map<Integer, Vertex> getAllVertexes() {
+        return AllVertexes;
+    }
+
+    public static Map< Vertex,Integer> getAllVertexesV() {
+        return AllVertexesV;
+    }
+
 
 
 
