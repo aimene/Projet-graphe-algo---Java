@@ -15,11 +15,20 @@ public class Application {
     public void run(){
         Numerotation n = new Numerotation();
 
-        GraphApsFs g = new GraphApsFs(n);
-        Graph gM = new GraphAdjMat(n);
-        g.readFromKeyBoard();
+        //GraphApsFs g = new GraphApsFs(n);
+      //  Graph gM = new GraphAdjMat(n);
+       /* g.readFromKeyBoard();
         g.fs2aps();
-        g.displayOnConsole();
+        g.displayOnConsole();*/
+
+        GraphAlgorithm ga = new GraphAlgorithm();
+
+        Numerotation num = new Numerotation();
+        Graph g =  new GraphApsFs(num);
+
+        g.readFromFile("fichier2.txt");
+        ((GraphApsFs) g).getFS();
+        ((GraphApsFs) g).fs2aps();
 
         System.out.println("Quelle algorithme souhaitez vous appliquer sur le graphe  ?");
 
@@ -49,8 +58,8 @@ public class Application {
 
                 System.out.println("Matrice des ditances ");
                 for (int i = 1; i < distMatrix[0][0] ; i++) {
-                    for (int j = 1; j <  distMatrix[0][0] ; j++) {
-                         System.out.println(distMatrix[i][j]);
+                    for (int j = 1; j <=  distMatrix[0][0] ; j++) {
+                         System.out.print(distMatrix[i][j]);
                     }
                     System.out.println();
                 }
@@ -58,13 +67,15 @@ public class Application {
             case 2:
                 grapheAlgorithm = new GraphAlgorithm();
                 System.out.println("Tableau des rangs des sommets");
-                g.fs2aps();
                 int[] rang = grapheAlgorithm.rang(g);
                 for (int i = 1; i <= g.getAPS()[0] ; i++) {
-                    System.out.print(rang[i]);
+                    System.out.print(rang[i]+" ");
                 }
                 break;
             case 3:
+                System.out.println("Problème de l'ordonnancement");
+                ga.chemin_critique(g);
+
 
                 break;
             case 4:
@@ -78,7 +89,7 @@ public class Application {
             case 5:
                 grapheAlgorithm = new GraphAlgorithm();
                 System.out.println("Algorithme de Kruskal");
-                Graph  ARM = grapheAlgorithm.kruskal(gM);
+                Graph  ARM = grapheAlgorithm.kruskal(g);
                 Edge[][] matAdj = ARM.getAdjMat();
 
                 for (int i = 1; i <  ARM.vertexNumber(); i++) {
@@ -95,8 +106,7 @@ public class Application {
             case 6:
                 grapheAlgorithm = new GraphAlgorithm();
                 System.out.println("Codage de Prüfer");
-                int[] cPrufer = grapheAlgorithm.codagePrufer(gM);
-                g.fs2aps();
+                int[] cPrufer = grapheAlgorithm.codagePrufer(g);
                 for (int i = 1; i <=g.getAPS()[0] ; i++) {
                     System.out.print(cPrufer[i]);
                 }
@@ -113,19 +123,19 @@ public class Application {
 
     public static void main(String[] args){
          Application a  = new Application();
-        // a.run();
-        GraphAlgorithm ga = new GraphAlgorithm();
+         a.run();
+       // GraphAlgorithm ga = new GraphAlgorithm();
 
-        Numerotation num = new Numerotation();
-        Graph g =  new GraphApsFs(num);
+        //Numerotation num = new Numerotation();
+       // Graph g =  new GraphApsFs(num);
 
-        g.readFromFile("fichier.txt");
-        ((GraphApsFs) g).fs2aps();
+       // g.readFromFile("fichier.txt");
+       // ((GraphApsFs) g).fs2aps();
         //ga.Dijkstra(g,g.getAdjMat(),1);
 
-        Graph k =ga.kruskal(g);
+        //Graph k =ga.kruskal(g);
 
-        k.displayOnConsole();
+        //k.displayOnConsole();
     }
 
 }

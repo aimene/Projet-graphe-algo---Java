@@ -73,11 +73,12 @@ public class  GraphApsFs extends Graph {
     @Override
     public int[] getAPP() {
         int[] app = new int[vertexNumber()+1];
+        app[0] = vertexNumber();
         app[1]=1;
         int[] ddi=new int[vertexNumber()+1];
         ddi=getDDI();
         for (int i=2;i<=vertexNumber();++i){
-            app[i+1]=app[i-1]+ddi[i-1] + 1;
+            app[i]=app[i-1]+ddi[i-1] + 1;
         }
         return app;
     }

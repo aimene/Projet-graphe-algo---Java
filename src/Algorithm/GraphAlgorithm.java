@@ -208,7 +208,9 @@ public class GraphAlgorithm {
                         }
                     }
                 }else{
-                    return distance;
+                    for (int l = 0; l < distance[n] ; l++) {
+                        System.out.print(distance[i]);
+                    }
                 }
 
             }
@@ -400,6 +402,58 @@ public class GraphAlgorithm {
 
 
     //Algorithme de l'ordonnancement
+
+    public void chemin_critique(Graph g){
+        int kc;
+        int k;
+        int j;
+        long l;
+
+        int n = g.getAPP()[0];
+        int m = g.getFP()[0];
+
+        int[] lc = new int[n+1];
+        int[] fpc = new int[m+1];
+        fpc[0] = m;
+        fpc[1] = 0;
+        int[] appc = new int[n+1];
+        appc[0] = n;
+        appc[1] = 1;
+        lc[1] = 0;
+        kc = 1;
+
+        for(int i=2; i< n; i++){
+            lc[i] = 0;
+            appc[i] = kc+1;
+            k = g.getAPP()[i];
+            j = g.getFS()[k];
+            while(g.getFS()[k] != 0){
+                l = lc[j] + g.getFP()[1];
+                if(l>= lc[i])
+                    if(l> lc[i]){
+                        lc[i] = (int) l;
+                        kc = g.getAPP()[i];
+                        fpc[kc] = j;
+                    }else{
+                        kc++;
+                        fpc[kc] = j;
+                    }
+                    k++;
+                    j++;
+                fpc[kc] = 0;
+            }
+        }
+        int suiv;
+        System.out.println("Le chemin critique est ");
+        for (int i = 1; i < fpc[0] ; i++) {
+            suiv = appc[i];
+            while(suiv != 0){
+               System.out.print(fpc[suiv]+" ");
+               suiv++;
+            }
+        }
+
+    }
 
     public int[] ordonnancement(Graph g ){
 
