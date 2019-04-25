@@ -79,7 +79,7 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
         JMenuItem item = new JMenuItem("Ouvrir...");
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-               // load();
+               load();
             }
         });
         menu.add(item);
@@ -470,7 +470,7 @@ public class GraphiqueGraphe extends JPanel implements MouseListener,MouseMotion
             for (int i = 0 ; i<iterS.size(); i++)
                 sortie.println(iterS.get(i).getName()+" "+iterS.get(i).getValue()+" "+iterS.get(i).getPosition().x+" "+ iterS.get(i).getPosition().y);
 
-Edge aa ;
+            Edge aa ;
             Collection<Edge> iterA = Edge.getEdge();
             for (int i = 0; i < iterS.size(); i++) {
                 Iterator<Edge> ee = iterA.iterator();
@@ -508,7 +508,7 @@ Edge aa ;
             throw new IOException("Erreur de syntaxe");
         return (int) analyseurLexical.nval;
     }
-/*
+
     void load() {
         JFileChooser dial = new JFileChooser();
         int result = dial.showOpenDialog(this);
@@ -517,29 +517,31 @@ Edge aa ;
         try {
             analyseurLexical = new StreamTokenizer(new FileReader(dial
                     .getSelectedFile()));
-            int nbr = prochainEntier();
-            for (int i = 0; i < nbr; i++) {
-                String etik = prochainMot();
+            int nbrSommet = prochainEntier();
+            int nbrEdge = prochainEntier();
+            for (int i = 0; i < nbrSommet; i++) {
+
+                String name = prochainMot();
+                Double value =(double) prochainEntier();
                 int x = prochainEntier();
                 int y = prochainEntier();
-                int z = prochainEntier();
                 Point p = new Point(x,y);
-                new Vertex(etik,z,p);
+                new Vertex(name,value,p);
             }
 
-            nbr = prochainEntier();
-            for (int i = 0; i < nbr; i++) {
-                String etik1 = prochainMot();
-                String etik2 = prochainMot();
-                int k = prochainEntier();
-                Vertex s1 = Vertex.trouverSommet(etik1);
-                if (s1 == null)
-                    throw new IOException(etik1 + " sommet inexistant");
-                Vertex s2 = Vertex.trouverSommet(etik2);
-                if (s2 == null)
-                    throw new IOException(etik2 + " sommet inexistant");
 
-                new Edge(s1, s2,k);
+            for (int i = 0; i < nbrSommet; i++) {
+                int indiceSuccesseur = prochainEntier();
+                double value = prochainEntier();
+
+                Vertex s1 = Vertex.trouverSommet(i);
+                if (s1 == null)
+                    throw new IOException(i + " sommet inexistant");
+                Vertex s2 = Vertex.trouverSommet(indiceSuccesseur);
+                if (s2 == null)
+                    throw new IOException(indiceSuccesseur + " sommet inexistant");
+
+                new Edge(s1, s2,value);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -548,7 +550,7 @@ Edge aa ;
         repaint();
     }
 
-*/
+
 
 
 }

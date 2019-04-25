@@ -13,8 +13,8 @@ public class GraphAdjMat extends Graph {
 
     public GraphAdjMat(Numerotation num) {
         super(num);
-        adjencyMatrix= new Edge[1][1];
-        adjencyMatrix[0][0]= new Edge(0);
+        adjencyMatrix= new Edge[numerotation.getCounter()+1][numerotation.getCounter()+1];
+       // adjencyMatrix[0][0]= new Edge(0);
         //adjencyMatrix[0][1]= new Edge(0);
     }
 
@@ -319,7 +319,7 @@ public class GraphAdjMat extends Graph {
             for (int j = 1; j <= vertexNumber(); j++) {
                 if (adjencyMatrix[i][j] != null) {
 
-                    fs[k] = numerotation.indexOf(adjencyMatrix[i][j].getVertexA());
+                    fs[k] = numerotation.indexOf(adjencyMatrix[i][j].getVertexB());
                     k++;
                 }
             }
@@ -449,11 +449,12 @@ public class GraphAdjMat extends Graph {
     }
 
     public void setVertexNumber(int n) {
-        adjencyMatrix[0][0].setValue(n);
+        adjencyMatrix[0][0]=new Edge(n);
+
     }
 
     public void setEdgeNumber(int n) {
-        adjencyMatrix[0][1].setValue(n);
+        adjencyMatrix[0][1]=new Edge(n);
     }
 
     @Override

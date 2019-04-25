@@ -24,12 +24,15 @@ public class Application {
         GraphAlgorithm ga = new GraphAlgorithm();
 
         Numerotation num = new Numerotation();
-        Graph g =  new GraphApsFs(num);
+        Graph temps =  new GraphAdjMat(num);
 
-        g.readFromFile("fichier2.txt");
 
-        ((GraphApsFs) g).fs2aps();
+        GraphApsFs r,g;
+        temps.readFromFile("fichierKruskal");
+        r=new GraphApsFs(num);
+        r.readFromFile("fichierKruskal.txt");
 
+        g =new GraphApsFs(num,temps.getFS(),temps.vertexNumber(),r.getValueEdge());
         System.out.println("Quelle algorithme souhaitez vous appliquer sur le graphe  ?");
 
         Scanner sc  =  new Scanner(System.in);
@@ -90,13 +93,14 @@ public class Application {
                 grapheAlgorithm = new GraphAlgorithm();
                 System.out.println("Algorithme de Kruskal");
                 Graph  ARM = grapheAlgorithm.kruskal(g);
+
                 Edge[][] matAdj = ARM.getAdjMat();
 
                 for (int i = 1; i <  ARM.vertexNumber(); i++) {
                     for (int  j= 1; j <ARM.vertexNumber() ; j++) {
                         if (matAdj[i][j]!=null){
-                            System.out.println(" Sommet de départ" +matAdj[i][j].getVertexA().getValue());
-                            System.out.println(" Sommet d'arriver"+ matAdj[i][j].getVertexB().getValue());
+                            System.out.println(" Sommet de départ" +matAdj[i][j].getVertexA().toString());
+                            System.out.println(" Sommet d'arriver"+ matAdj[i][j].getVertexB().toString());
                             System.out.println(" poids de l'arrête" + matAdj[i][j].getValue());
                         }
 

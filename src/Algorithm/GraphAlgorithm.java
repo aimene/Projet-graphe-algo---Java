@@ -1,9 +1,6 @@
 package Algorithm;
 
-import principal.Edge;
-import principal.Graph;
-import principal.GraphApsFs;
-import principal.Numerotation;
+import principal.*;
 
 
 public class GraphAlgorithm {
@@ -351,9 +348,9 @@ public class GraphAlgorithm {
          //Initialisation
          int n = g.vertexNumber(), m = g.edgeNumber();
           Numerotation numerotation = new Numerotation();
-         Graph t = new GraphApsFs(numerotation,n,m);
+         Graph t = new GraphAdjMat(g.getNumerotation());
           t.setVertexNumber(n);
-          t.setEdgeNumber(m-1);
+          t.setEdgeNumber(m);
 
 
 

@@ -10,6 +10,10 @@ public class Numerotation {
     private Hashtable< Vertex ,Integer > vertexHashTable;
     private Vector<Vertex> vertex;
 
+    public int getCounter() {
+        return counter;
+    }
+
     public Numerotation(){
         counter = 0;
         vertexHashTable = new Hashtable<Vertex ,Integer>();

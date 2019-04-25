@@ -20,10 +20,17 @@ public class  GraphApsFs extends Graph {
         super(num);
 
     }
-    public GraphApsFs(Numerotation num,int[]fs){
+    public GraphApsFs(Numerotation num,int[]fs,int numberVertex,double[]value){
         this(num);
         this.fs=fs;
+        aps = new int[numberVertex+1];
+        aps[0]=numberVertex;
         fs2aps();
+        valueEdge=new double[value.length];
+        for (int i=0;i<value.length;i++){
+            valueEdge[i]=value[i];
+
+        }
     }
     public GraphApsFs(Numerotation num,int numberoFVertex,int numberOfEdge){
         this(num);
@@ -312,7 +319,7 @@ public class  GraphApsFs extends Graph {
            k++;
            fs[k]=0;
             fs2aps();
-            bufferedReader.close();
+         //  bufferedReader.close();
 
             return true;
         } catch (Exception e) {
@@ -323,13 +330,18 @@ public class  GraphApsFs extends Graph {
 
     @Override
     public double valueEdge(Vertex a, Vertex b) {
-        if(existVertex(a) && existVertex(b)){
+        if (existVertex(a) && existVertex(b)) {
+            int indexA = numerotation.indexOf(a);
             int indexB = numerotation.indexOf(b);
-            int tmp = aps[indexB+1]-aps[indexB]-1;
-                if(tmp>=0){
-                    return valueEdge[indexB];
-                }
+            int k = aps[indexA];
+            while (fs[k] != 0) {
+                if (fs[k] == indexB)
+                    return valueEdge[k];
+                k++;
             }
+
+
+        }
         return -1;
     }
 
@@ -474,6 +486,7 @@ public class  GraphApsFs extends Graph {
                 writer.print(fs[k]+" " + valueEdge[k]+ " ");
                 k++;
             }
+            fs2aps();
             writer.close();
             return true;
         } catch (Exception e) {
@@ -525,19 +538,25 @@ public class  GraphApsFs extends Graph {
 
         return adjMat;
     }
+
+    public double[] getValueEdge() {
+        return valueEdge;
+    }
+
     public void fs2aps(){
         int n = vertexNumber();
-        aps = new int[n+1];
+        //aps = new int[n+1];
         aps[0]=n;
         aps[1]=1;
         int j=2;
         for (int i = 2;i<=n;++i){
-           while((fs[j])!=0 && j<= fs.length){
+           while(j< fs[0]&&(fs[j])!=0 ){
                 ++j;
            }
             j++;
             aps[i]=j;
         }
+
     }
     public static void main(String[] args) {
         Numerotation n = new Numerotation();
