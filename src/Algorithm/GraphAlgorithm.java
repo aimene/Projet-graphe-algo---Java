@@ -176,7 +176,10 @@ public class GraphAlgorithm {
         boolean [] tabBool = new boolean[n+1];
 
         for(int i=1; i<=n;i++){
+            if( Cout[s][i]!=null)
             distance[i] = Cout[s][i].getValue();
+            else
+                distance[i]=MAXPOIDS;
             pred[i] = 0;
             tabBool[i] = true;
         }
@@ -196,7 +199,7 @@ public class GraphAlgorithm {
 
                     tabBool[j] = false;
                     for(int l = aps[j]; ((k = fs[l])!=0) ;l++){
-                        if(tabBool[k]){
+                        if(tabBool[k] &&  Cout[j][k]!=null){
                             v = distance[j] + Cout[j][k].getValue();
                             if(v < distance[k]){
                                 distance[k] = v;

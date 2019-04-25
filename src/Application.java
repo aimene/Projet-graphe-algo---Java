@@ -84,9 +84,15 @@ public class Application {
             case 4:
                 grapheAlgorithm = new GraphAlgorithm();
                 System.out.println("Algorithme de Djikstra");
-                double[] distanceMinimal = grapheAlgorithm.Dijkstra(g,g.getAdjMat(),1);
-                for (int i = 1; i <= g.getAPS()[0] ; i++) {
-                    System.out.print(distanceMinimal[i]);
+
+                for (int j = 1; j <= g.getAPS()[0] ; j++) {
+                    System.out.println("Partant du sommet numéro ( " + j+" )");
+                    double[] distanceMinimal = grapheAlgorithm.Dijkstra(g,g.getAdjMat(),j);
+                    for (int i = 1; i <= g.getAPS()[0]; i++) {
+
+                        System.out.print(" indice du somme "+i+" distance = "+distanceMinimal[i]);
+                    }
+                    System.out.println();
                 }
                 break;
             case 5:
